@@ -7,12 +7,12 @@ var express =    require("express"),
     passport = require('passport'),
     User = require("./models/User.js"),
     LocalStrategy = require('passport-local'),
-    passportLocalMongoose = require("passport-local-mongoose"),
+    passportLocalMongoose = require("passport-local-mongoose");
 
 
 // ------ Adding route dependancies ------
 
-var indexRoutes = require("./routes/index_routes.js"),
+var indexRoutes = require("./routes/index_routes.js");
 
 
 /* ------ Setting up dependancies and connections ------ */
