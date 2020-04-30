@@ -1,6 +1,7 @@
 // ------ Adding dependancies ------
 var express =    require("express"),
     bodyParser = require("body-parser"),
+    dotEnv     = require("dotenv").config(),
     mongoose =   require("mongoose"),
     expressSession = require("express-session"),
     passport = require('passport'),
@@ -21,21 +22,17 @@ var app = express();
 
 
 
-
-
-
-
-
-
-
 // ... mongoose ...
-// Voeg nog een locatie van de database toe !!!!!!!!!!!!!!!!!
-// !!!!!!! mongoose.connect('mongodb://localhost/addOurPath', {useNewUrlParser: true});
-
-
-
-
-
+const dbLocation = process.env.DATABASELOCATION || "mongodb://localhost/corona_check";
+mongoose.connect(dbLocation, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true
+   }).then(() => {
+      console.log("Connected to Corona Check DB");
+   }).catch(err => {
+      console.log("ERROR:", err.message);
+   });
 
 
 
@@ -44,7 +41,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // ... passport ...
 app.use(expressSession(
     {
-        secret: "we hebben een secret nodig",
+        secret: process.env.PASSPORTSECRET,
         resave: false,
         saveUninitialized: false
     }
@@ -74,6 +71,5 @@ app.use(indexRoutes);
 // ......------ Listnening to server------......
 ////////////////////////////////////////////////////////////////////////////////////
 
-app.listen(3000, function(){
-    console.log("scratch server is listening");
-});
+const port = process.env.PORT || 3000;
+app.listen(port, () => {console.log("Corona Check server is running");});
