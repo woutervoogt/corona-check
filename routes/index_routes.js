@@ -5,9 +5,7 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     passport = require('passport'),
-    User = require("../models/User.js"),
-    ScrProject = require("../models/ScrProject.js"),
-    Comment = require("../models/Comments.js");
+    User = require("../models/User.js");
 
 
 //================================================================================
