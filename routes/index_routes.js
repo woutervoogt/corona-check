@@ -30,6 +30,15 @@ router.get("/under_construction", function(req, res){
     res.render("under_construction.ejs");
 });
 
+//================================================================================
+// Test routes
+//================================================================================
+
+router.post("/test", function(req, res){
+    console.log(req.body.loginUsername);
+    console.log(req.body.loginPassword);
+    res.redirect("/login");
+});
 
 //================================================================================
 // Register routes
