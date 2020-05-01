@@ -5,7 +5,8 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     passport = require('passport'),
-    User = require("../models/User.js");
+    User = require("../models/User.js"),
+    youtubeAPI = require("../controllers/youtube-api.js");
 
 
 //================================================================================
@@ -18,7 +19,7 @@ var router = express.Router();
 // Index Routes
 //================================================================================
 
-router.get("/",function(req, res){
+router.get("/", youtubeAPI, function(req, res){
     res.render("landing.ejs");
 });
 
