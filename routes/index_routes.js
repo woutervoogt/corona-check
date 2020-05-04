@@ -71,7 +71,7 @@ router.post("/register", function(req, res){
 // ------ Get ------ //
 
 router.get("/login", function(req, res){
-    res.render("loginpage.ejs");
+    res.render("public_overview.ejs");
 });
 
 // ------ Post ------ //

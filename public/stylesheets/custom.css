@@ -34,3 +34,98 @@
     border-radius: 5px;
     align-self: stretch;
 }
+
+/*====================================================================================
+showpage
+=====================================================================================*/
+
+#janus_canvas{
+
+    display: block;
+    position: absolute;
+    align-self: center;
+    left: calc((20vw - 400px)/2);
+    background-color: green;
+}
+
+.tri_panel, .tri_panel_left, .tri_panel_right{
+    height: calc(100vh - 56px);
+    width: 100vw;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    grid-template-columns: 5fr 400px 1fr;
+    overflow: hidden;
+}
+
+.middle_panel{
+    grid-column: 2;
+    grid-row: 1;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 20%;
+    margin: 0;
+    padding: 0;
+}
+
+.left_panel{
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    background-color: black;
+    width: 40%;
+    transition: width 1s;
+}
+
+.right_panel{
+    grid-column: 3;
+    grid-row: 1;
+    display: block;
+    background-color: green;
+    width: 40%;
+    transition: width 1s;
+}
+
+.tri_panel_left .left_panel{
+    width: 0%;
+    
+}
+
+.tri_panel_left .right_panel{
+    width: 80%;
+}
+
+.tri_panel_right .left_panel{
+    width: 80%;
+}
+
+.tri_panel_right .right_panel{
+    width: 0%;
+}
+
+.not_so_hidden_div_temp{
+    display: block;
+}
+.hidden_div_temp{
+    display:none;
+}
+
+
+.hidden_div_temp_container{
+    opacity: 1;
+    opacity: 0;
+    background-color: purple;
+    transition: opacity 1.5s;
+    
+}
+
+.not_so_hidden_div_temp_container{
+    opacity: 0;
+    opacity: 1;
+    background-color: purple;
+    transition: opacity 1.5s;
+    transition-delay: opacity 0.6s;
+}
+
+
