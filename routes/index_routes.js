@@ -40,10 +40,16 @@ router.post("/test", function(req, res){
     res.redirect("/login");
 });
 
-router.get("/test", function(req, res){
+router.get("/test1", function(req, res){
+
+    res.render("search_page.ejs");
+});
+
+router.get("/test2", function(req, res){
 
     res.render("public_overview.ejs");
 });
+
 
 //================================================================================
 // Register routes
