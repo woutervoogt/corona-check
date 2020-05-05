@@ -72,7 +72,9 @@ showpage
 .left_panel{
     grid-column: 1;
     grid-row: 1;
-    display: block;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
     background-color: black;
     width: 40%;
     transition: width 1s;
@@ -81,7 +83,9 @@ showpage
 .right_panel{
     grid-column: 3;
     grid-row: 1;
-    display: block;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
     background-color: green;
     width: 40%;
     transition: width 1s;
@@ -151,5 +155,6 @@ showpage
     background-color: purple;
     transition: opacity 1.5s 0.5s; 
 }
+
 
 

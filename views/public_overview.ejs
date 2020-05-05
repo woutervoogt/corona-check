@@ -8,8 +8,8 @@ var myList = {
 <%- include("partials/header")%>
 <div class="tri_panel">
     <div class="left_panel">
-        <h1>betrouwbaar</h1>
         <div class="good_list">
+            <h1>betrouwbaar</h1>
             <% for (i=0; i<myList.good.length; i++) {%>
                 <div>
                     <h1>Dit is <%=myList.good[i]%></h1>
@@ -26,8 +26,9 @@ var myList = {
         <canvas id="janus_canvas" width="400"></canvas>
     </div>
     <div class="right_panel">
-        <h1>onbetrouwbaar</h1>
+        
         <div class="bad_list">
+            <h1>onbetrouwbaar</h1>
             <% for (i=0; i<myList.bad.length; i++) {%>
                 <div>
                     <h1>Dit is <%=myList.bad[i]%></h1>
