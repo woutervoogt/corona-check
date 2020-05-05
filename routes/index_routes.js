@@ -40,6 +40,11 @@ router.post("/test", function(req, res){
     res.redirect("/login");
 });
 
+router.get("/test", function(req, res){
+
+    res.render("public_overview.ejs");
+});
+
 //================================================================================
 // Register routes
 //================================================================================
@@ -71,7 +76,7 @@ router.post("/register", function(req, res){
 // ------ Get ------ //
 
 router.get("/login", function(req, res){
-    res.render("public_overview.ejs");
+    res.render("loginpage.ejs");
 });
 
 // ------ Post ------ //
