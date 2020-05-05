@@ -20,7 +20,7 @@ var router = express.Router();
 //================================================================================
 
 router.get("/", function(req, res){
-    res.render("landing.ejs", {videos : youtubeAPI});
+    res.render("landing.ejs", {videos: });
 });
 
 //================================================================================
