@@ -87,6 +87,14 @@ showpage
     transition: width 1s;
 }
 
+.left_panel *{
+    transition: opacity 0.5s;
+}
+
+.right_panel *{
+    transition: opacity 0.5s;
+}
+
 .tri_panel_left .left_panel{
     width: 0%;
     
@@ -102,6 +110,23 @@ showpage
 
 .tri_panel_right .right_panel{
     width: 0%;
+}
+
+.tri_panel_left .left_panel *{
+    opacity: 0;
+    
+}
+
+.tri_panel_left .right_panel *{
+    opacity: 1;
+}
+
+.tri_panel_right .left_panel *{
+    opacity: 1;
+}
+
+.tri_panel_right .right_panel *{
+    opacity: 0;
 }
 
 .not_so_hidden_div_temp{
@@ -124,8 +149,7 @@ showpage
     opacity: 0;
     opacity: 1;
     background-color: purple;
-    transition: opacity 1.5s 0.5s;
-    
+    transition: opacity 1.5s 0.5s; 
 }
 
 
