@@ -8,8 +8,7 @@ const youtube = google.youtube({
 });
 
 // a very simple example of searching for youtube videos
-async function runSample() {
-  
+YoutubeAPI = async function runSample() {
   const res = await youtube.search.list({
       part: 'id,snippet',
       maxResults: 10,
@@ -17,11 +16,10 @@ async function runSample() {
       q: 'Node.js on Google Cloud',
       type: "video"
     });
-    console.log(res.data.items[0]);
   }
   
   if (module === require.main) {
     runSample().catch(console.error);
   }
 
-module.exports = runSample;
+module.exports = YoutubeAPI;

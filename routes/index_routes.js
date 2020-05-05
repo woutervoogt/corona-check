@@ -19,8 +19,8 @@ var router = express.Router();
 // Index Routes
 //================================================================================
 
-router.get("/", youtubeAPI, function(req, res){
-    res.render("landing.ejs");
+router.get("/", function(req, res){
+    res.render("landing.ejs", {videos : youtubeAPI});
 });
 
 //================================================================================
