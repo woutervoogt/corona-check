@@ -15,13 +15,9 @@ async function youtubeAPI() {
       order: "viewCount",
       q: 'Node.js on Google Cloud',
       type: "video",
-      pageToken: "CBkQAA"
     });
-    let videos = res.data.items;
-    return videos;
-    // console.log(res.data.items);
-    // let videos = res.data.items;
-    // return next() 
+    let data = res.data;
+    return data;
   }
  
   if (module === require.main) {

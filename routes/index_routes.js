@@ -20,13 +20,7 @@ var router = express.Router();
 //================================================================================
 
 router.get("/", function(req, res){
-    router.get("/", function(req, res){
-        async function waitRender(){
-            var videos = await youtubeAPI();
-            res.render("landing.ejs", {videos: videos});
-        }
-        waitRender();
-    });
+    res.render("landing.ejs");
 });
 
 //================================================================================
@@ -35,6 +29,18 @@ router.get("/", function(req, res){
 
 router.get("/under_construction", function(req, res){
     res.render("under_construction.ejs");
+});
+
+//================================================================================
+// Expert User Routes
+//================================================================================
+
+router.get("/dashboard", function(req, res){
+    async function waitRender(){
+        let data = await youtubeAPI();
+        res.render("expert-overview.ejs", {data: data});
+    }
+    waitRender();
 });
 
 //================================================================================
