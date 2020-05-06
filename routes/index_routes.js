@@ -20,7 +20,13 @@ var router = express.Router();
 //================================================================================
 
 router.get("/", function(req, res){
-    res.render("landing.ejs", {videos: });
+    router.get("/", function(req, res){
+        async function waitRender(){
+            var videos = await youtubeAPI();
+            res.render("landing.ejs", {videos: videos});
+        }
+        waitRender();
+    });
 });
 
 //================================================================================
