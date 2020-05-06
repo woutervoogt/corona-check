@@ -5,7 +5,8 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     passport = require('passport'),
-    User = require("../models/User.js");
+    User = require("../models/User.js"),
+    youtubeAPI = require("../controllers/youtube-api.js");
 
 
 //================================================================================
@@ -18,7 +19,7 @@ var router = express.Router();
 // Index Routes
 //================================================================================
 
-router.get("/",function(req, res){
+router.get("/", function(req, res){
     res.render("landing.ejs");
 });
 
@@ -28,6 +29,18 @@ router.get("/",function(req, res){
 
 router.get("/under_construction", function(req, res){
     res.render("under_construction.ejs");
+});
+
+//================================================================================
+// Expert User Routes
+//================================================================================
+
+router.get("/dashboard", function(req, res){
+    async function waitRender(){
+        let data = await youtubeAPI();
+        res.render("expert-overview.ejs", {data: data});
+    }
+    waitRender();
 });
 
 //================================================================================

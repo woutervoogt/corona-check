@@ -1,0 +1,12 @@
+<%- include("partials/header") %>
+<%- include("partials/nav-bar") %>
+
+<ul>
+   <% for(var i=0; i<10; i++) {%>
+      <li>
+         <a href="https:/www.youtube.com/channel/<%= data.items[i].snippet.channelId%>">
+            <%= data.items[i].snippet.channelTitle%>
+         </a>
+      </li>
+   <% } %>
+</ul>
