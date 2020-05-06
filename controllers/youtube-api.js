@@ -7,13 +7,13 @@ const youtube = google.youtube({
   auth: process.env.APIKEY
 });
 
-// a very simple example of searching for youtube videos
+// Get search list from youtube
 async function youtubeAPI() {
   const res = await youtube.search.list({
       part: 'id,snippet',
       maxResults: 10,
       order: "viewCount",
-      q: 'Node.js on Google Cloud',
+      q: 'Corona',
       type: "video",
     });
     let data = res.data;
@@ -23,6 +23,5 @@ async function youtubeAPI() {
   if (module === require.main) {
     youtubeAPI().catch(console.error);
   }
-
 
 module.exports = youtubeAPI;
