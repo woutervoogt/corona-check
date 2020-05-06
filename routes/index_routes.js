@@ -50,6 +50,10 @@ router.get("/test2", function(req, res){
     res.render("public_overview.ejs");
 });
 
+router.get("/test3", function(req, res){
+
+    res.render("expertpage.ejs");
+});
 
 //================================================================================
 // Register routes
