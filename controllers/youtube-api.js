@@ -16,8 +16,7 @@ async function youtubeAPI() {
       q: 'Corona',
       type: "video",
     });
-    let data = res.data;
-    return data;
+    return res.data;
   }
  
   if (module === require.main) {
