@@ -3,7 +3,13 @@
 <div class="expertpage_layout">
     <div class="ticket_list">
         <div class= "ticket_list_info_space">
-            <h1>Hier komt een lijst met de tickets</h1>
+            <!-- Hier komt een lijst met de tickets -->
+            <% for(var i=0; i<data.items.length; i++) {%>
+                <div class="ticket_list_info_item">
+                    <h4><%= data.items[i].snippet.channelTitle%></h4>
+                    <h4><%= data.items[i].snippet.title%></h4>
+                </div>
+             <% } %>
         </div>
         <div class="ticket_list_button_space">
             <h1>Hier komen buttons te staan</h1>
@@ -11,10 +17,14 @@
     </div>
     <div class="ticket_info">
         <div class= "ticket_info_info_space">
-            <h1>Hier komt een frame met de info over de geselecteerde ticket</h1>
+            <!-- Hier komt een frame met de info over de geselecteerde ticket -->
+            <h3>Channel: <%= data.items[0].snippet.channelTitle%></h3>
+            <h3>Video: <%= data.items[0].snippet.title%></h3>
+            <p>Video Description: <%= data.items[0].snippet.description%></p>
         </div>
         <div class="ticket_info_button_space">
-            <h1>Hier komen een aantal buttons (met bijvoorbeeld links naar de video)</h1>
+            <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
+            <a href="https://www.youtube.com/watch?v=<%# VIDEO ID %>"><button>Go to video</button></a>
         </div>
     </div>
     <div class="ticket_send_options">
