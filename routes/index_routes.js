@@ -37,8 +37,8 @@ router.get("/under_construction", function(req, res){
 
 router.get("/dashboard", function(req, res){
     async function waitRender(){
-        let data = await youtubeAPI();
-        res.render("expert-overview.ejs", {data: data});
+        let apiData = await youtubeAPI();
+        res.render("expertpage.ejs", {data: apiData});
     }
     waitRender();
 });
