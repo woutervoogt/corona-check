@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const YTDataSchema = new mongoose.Schema({
-  requestPending: {
-    type: Boolean,
-    default: false,
-  },
   videoTitle: String,
   videoId: String,
   videoDescription: String,

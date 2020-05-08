@@ -13,7 +13,7 @@ const youtube = google.youtube({
 async function youtubeAPI() {
   const res = await youtube.search.list({
     part: "id,snippet",
-    maxResults: 10,
+    maxResults: 50,
     type: "video",
     regionCode: "US",
     order: "viewCount",
@@ -21,17 +21,17 @@ async function youtubeAPI() {
     // videoCategoryId: "News & Politics",     returns bad request api response
   });
   const apiData = res.data;
-  clearOldData();
-  saveToDatabase(apiData);
-  return res.data;
+  refreshData(apiData);
+  return apiData; //temporary to show on webpage
 }
 
-function clearOldData() {
+function refreshData(apiData) {
   YTData.deleteMany({}, function (err) {
     if (err) {
       console.log(err);
     } else {
       console.log("old data removed");
+      saveToDatabase(apiData);
     }
   });
 }
