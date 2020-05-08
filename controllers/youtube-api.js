@@ -20,9 +20,25 @@ async function youtubeAPI() {
     q: "Covid 19",
     // videoCategoryId: "News & Politics",     returns bad request api response
   });
+  const apiData = res.data;
+  clearOldData();
+  saveToDatabase(apiData);
+  return res.data;
+}
 
-  for (let i = 0; i < res.data.items.length; i++) {
-    const videoData = res.data.items[i];
+function clearOldData() {
+  YTData.deleteMany({}, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("old data removed");
+    }
+  });
+}
+
+function saveToDatabase(data) {
+  for (let i = 0; i < data.items.length; i++) {
+    const videoData = data.items[i];
     videoId = videoData.id.videoId;
     videoTitle = videoData.snippet.title;
     videoDescription = videoData.snippet.description;
@@ -38,10 +54,11 @@ async function youtubeAPI() {
     YTData.create(newYTData, function (err, newlyCreated) {
       if (err) {
         console.log(err);
+      } else {
+        console.log("api data is saved");
       }
     });
   }
-  return res.data;
 }
 
 if (module === require.main) {
