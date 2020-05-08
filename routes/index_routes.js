@@ -47,11 +47,6 @@ router.get("/dashboard", function(req, res){
 // Test routes
 //================================================================================
 
-router.post("/test", function(req, res){
-    console.log(req.body.loginUsername);
-    console.log(req.body.loginPassword);
-    res.redirect("/login");
-});
 
 router.get("/test1", function(req, res){
 
@@ -74,7 +69,7 @@ router.get("/test3", function(req, res){
 
 // ------ Get ------ //
 router.get("/register", function(req, res){
-    res.render("registerform.ejs");
+    res.render("registerpage.ejs");
 });
 
 // ------ Post ------ //
@@ -105,8 +100,8 @@ router.get("/login", function(req, res){
 // ------ Post ------ //
 
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/projectspage",
-    failureRedirect: "/register"
+    successRedirect: "/test2",
+    failureRedirect: "/test3"
 }),function(req,res){}); 
 
 //================================================================================
