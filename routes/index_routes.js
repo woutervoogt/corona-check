@@ -36,15 +36,29 @@ router.get("/under_construction", function (req, res) {
 //================================================================================
 
 router.get("/dashboard", function (req, res) {
-  async function waitRender() {
+  let minusOneHourDate = new Date(Date.now() - 3600000);
+  YTSearchData.find(
+    {
+      createdAt: {
+        $lt: minusOneHourDate,
+      },
+    },
+    function (err, oldVideos) {
+      if (oldVideos.length) {
+        getNewData();
+        console.log("New Youtube Search Data");
+      }
+    }
+  );
+
+  async function getNewData() {
     await youtubeAPI();
   }
-  waitRender();
+
   YTSearchData.find({}, function (err, allVideos) {
     if (err) {
       console.log(err);
     } else {
-      console.log(allVideos.length);
       res.render("expertpage.ejs", { data: allVideos });
     }
   });

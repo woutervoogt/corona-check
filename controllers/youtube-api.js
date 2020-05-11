@@ -22,7 +22,6 @@ async function youtubeAPI() {
   });
   const apiData = res.data;
   refreshData(apiData);
-  return apiData; //temporary to show on webpage
 }
 
 function refreshData(apiData) {
@@ -30,7 +29,6 @@ function refreshData(apiData) {
     if (err) {
       console.log(err);
     } else {
-      console.log("old data removed");
       saveToDatabase(apiData);
     }
   });
@@ -49,8 +47,6 @@ function saveToDatabase(data) {
     YTData.create(newYTData, function (err, newlyCreated) {
       if (err) {
         console.log(err);
-      } else {
-        console.log("api data is saved");
       }
     });
   }
