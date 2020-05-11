@@ -6,6 +6,7 @@ var express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
   User = require("../models/User.js"),
+  YTSearchData = require("../models/yt-data"),
   youtubeAPI = require("../controllers/youtube-api.js");
 
 //================================================================================
@@ -36,10 +37,17 @@ router.get("/under_construction", function (req, res) {
 
 router.get("/dashboard", function (req, res) {
   async function waitRender() {
-    let apiData = await youtubeAPI();
-    res.render("expertpage.ejs", { data: apiData });
+    await youtubeAPI();
   }
   waitRender();
+  YTSearchData.find({}, function (err, allVideos) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(allVideos.length);
+      res.render("expertpage.ejs", { data: allVideos });
+    }
+  });
 });
 
 //================================================================================

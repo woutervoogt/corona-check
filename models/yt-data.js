@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const YTDataSchema = new mongoose.Schema({
+const YTSearchDataSchema = new mongoose.Schema({
   videoTitle: String,
   videoId: String,
   videoDescription: String,
@@ -8,4 +8,4 @@ const YTDataSchema = new mongoose.Schema({
   channelId: String,
 });
 
-module.exports = mongoose.model("YTData", YTDataSchema);
+module.exports = mongoose.model("YTSearchData", YTSearchDataSchema);
