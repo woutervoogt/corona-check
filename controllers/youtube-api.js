@@ -9,8 +9,10 @@ const youtube = google.youtube({
   auth: process.env.APIKEY,
 });
 
+let youtubeAPI = {};
+
 // Get search list from youtube
-async function youtubeAPI() {
+youtubeAPI.searchList = async function () {
   const res = await youtube.search.list({
     part: "id,snippet",
     maxResults: 50,
@@ -21,10 +23,11 @@ async function youtubeAPI() {
     // videoCategoryId: "News & Politics",     returns bad request api response
   });
   const apiData = res.data;
-  refreshData(apiData);
-}
+  await refreshData(apiData);
+  // .then(() => true);
+};
 
-function refreshData(apiData) {
+async function refreshData(apiData) {
   YTData.deleteMany({}, function (err) {
     if (err) {
       console.log(err);
@@ -40,7 +43,7 @@ function saveToDatabase(data) {
     const newYTData = {
       videoId: videoData.id.videoId,
       videoTitle: videoData.snippet.title,
-      videoDescription: videoData.snippet.description,
+      // videoDescription: videoData.snippet.description,
       channelId: videoData.snippet.channelId,
       channelTitle: videoData.snippet.channelTitle,
     };
@@ -51,6 +54,35 @@ function saveToDatabase(data) {
     });
   }
 }
+
+youtubeAPI.videoInfo = async function () {
+  YTData.find({}, async function (err, foundData) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(foundData.length);
+      for (let i = 0; i < foundData.length; i++) {
+        const res = await youtube.videos.list({
+          part: "snippet,statistics",
+          id: foundData[i].videoId,
+        });
+        console.log(foundData[i]._id);
+        YTData.update({ _id: foundData[i]._id }, { videoDescription: "2" });
+        // foundData[i].videoDescription = "1";
+        // foundData[i].save((err) => {
+        //   console.log(err);
+        // });
+        // console.log(foundData[i].videoDescription);
+        // foundData[i].videoDescription = res.data.items[i].snippet.description;
+        // foundData[i].viewCount = res.data.items[i].statistics.viewCount;
+        // foundData[i].save((err) => {
+        //   console.log(err);
+        // });
+        console.log(foundData[i].videoDescription);
+      }
+    }
+  });
+};
 
 if (module === require.main) {
   youtubeAPI().catch(console.error);

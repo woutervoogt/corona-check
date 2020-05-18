@@ -1,4 +1,7 @@
 <%- include("partials/header") %>
+<script>
+    
+</script>
 
 <div class="expertpage_layout">
     <div class="ticket_list">
@@ -6,7 +9,7 @@
             <!-- Hier komt een lijst met de tickets -->
             <div class="ticket_list_info_list_container">
                 <% for(var i=0; i<data.length; i++) {%>
-                    <div class="ticket_list_info_list_item">
+                    <div class="ticket_list_info_list_item" id="<%= data[i]._id %>">
                         <h4><%= data[i].channelTitle%></h4>
                         <h4><%= data[i].videoTitle%></h4>
                     </div>

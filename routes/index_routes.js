@@ -36,7 +36,7 @@ router.get("/under_construction", function (req, res) {
 //================================================================================
 
 router.get("/dashboard", function (req, res) {
-  let minusOneHourDate = new Date(Date.now() - 3600000);
+  let minusOneHourDate = new Date(Date.now() - 360); //3600000
   YTSearchData.find(
     {
       createdAt: {
@@ -44,7 +44,7 @@ router.get("/dashboard", function (req, res) {
       },
     },
     function (err, oldVideos) {
-      if (oldVideos.length) {
+      if (oldVideos.length !== 0) {
         getNewData();
         console.log("New Youtube Search Data");
       }
@@ -52,7 +52,7 @@ router.get("/dashboard", function (req, res) {
   );
 
   async function getNewData() {
-    await youtubeAPI();
+    await youtubeAPI.searchList().then(() => youtubeAPI.videoInfo());
   }
 
   YTSearchData.find({}, function (err, allVideos) {
