@@ -153,6 +153,13 @@ showpage
   transition: opacity 1.5s 0.5s;
 }
 
+.good_list, .bad_list{
+  height: 80%;
+  width: 30vw;
+  background-color: blue;
+
+}
+
 /*====================================================================================
 searchfield
 =====================================================================================*/
@@ -204,7 +211,7 @@ searchfield
 }
 
 /*====================================================================================
-searchfield
+expertpage
 =====================================================================================*/
 .expertpage_layout {
   height: calc(100vh - 56px);
@@ -217,33 +224,51 @@ searchfield
   align-items: stretch;
 }
 
+.expertpage_layout h1{
+  font-size: 1vw;
+}
+
 .ticket_list {
-  background-color: green;
+  background-color: rgb(80, 82, 80);
   grid-row: 3 / span 3;
   grid-column: 2 / span 2;
   display: grid;
-  grid-template-columns: 40px 1fr 40px;
-  grid-template-rows: 40px 60% 4fr 20px 15% 1fr 40px;
+  grid-template-columns: 20px 1fr 20px;
+  grid-template-rows: 8.4vh 60% 4fr 20px 60px 0px 2.4vh;
+  align-items: stretch;
+  justify-content: stretch;
+  border: 2px solid black;
+}
+
+.scrollspace {
+  background-color: none;
+  grid-row: 3 / span 3;
+  grid-column: 5 / span 2;
+  display: grid;
+  grid-template-columns: 0px 22% 1fr 20px 44% 2fr 0px;
+  grid-template-rows: 0px 1fr 60% 20px 30% 2fr 0px;
   align-items: stretch;
   justify-content: stretch;
 }
+
 .ticket_info {
-  background-color: purple;
-  grid-row: 3;
-  grid-column: 5 / span 2;
+  background-color: rgb(80, 82, 80);
+  grid-row: 2/ span 2;
+  grid-column: 2 / span 5;
   display: grid;
-  grid-template-columns: 40px 60% 3fr 20px 20% 1fr 40px;
-  grid-template-rows: 40px 1fr 40px;
+  grid-template-columns: 20px 60% 3fr 20px 20% 1fr 20px;
+  grid-template-rows: 8.4vh 1fr 2.1vh;
   align-items: stretch;
   justify-content: stretch;
+
 }
 .ticket_send_options {
-  background-color: black;
-  grid-row: 5;
-  grid-column: 5 / span 2;
+  background-color: rgb(80, 82, 80);
+  grid-row: 5/ span 2;
+  grid-column: 2 / span 5;
   display: grid;
-  grid-template-columns: 40px 60% 3fr 20px 20% 1fr 40px;
-  grid-template-rows: 40px 1fr 40px;
+  grid-template-columns: 20px 60% 3fr 20px 20% 1fr 20px;
+  grid-template-rows: 4.8vh 1fr 4.8vh;
   align-items: stretch;
   justify-content: stretch;
 }
@@ -254,21 +279,33 @@ searchfield
   grid-row: 5 / span 2;
   grid-column: 2;
   background-color: rgba(255, 255, 255, 0.399);
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 100%;
+  align-items: stretch;
+  justify-items: stretch;
+  margin-left: 20px;
+  margin-right: 20px;
+
 }
 
 .ticket_list_info_space {
   grid-row: 2 / span 2;
   grid-column: 2;
   background-color: rgba(255, 255, 255, 0.399);
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .ticket_list_info_list_container {
+  height: 100%;
   overflow-y: scroll;
-  max-height: 100%;
 }
 
 .ticket_list_info_list_item {
   background-color: chartreuse;
+  margin-right: 12px;
+  margin-left: 12px;
 }
 /*----sub groups: ticket list----*/
 
@@ -276,11 +313,29 @@ searchfield
   grid-row: 2;
   grid-column: 5 / span 2;
   background-color: rgba(255, 255, 255, 0.399);
+  padding-top: 2.4vh;
+  padding-bottom: 2.4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
+
+.ticket_info_button_space button, .ticket_info_button_space a {
+width: 80%;
+height: 50px;
+}
+
+.ticket_info_button_space a button{ /* temporary: the button within an a tag needs to go*/
+  width: 100%;
+  height: 100%;
+}
+
 .ticket_info_info_space {
   grid-row: 2;
   grid-column: 2 / span 2;
   background-color: rgba(255, 255, 255, 0.399);
+  overflow-y: scroll;
 }
 
 /*----sub groups: ticket list----*/
@@ -288,10 +343,200 @@ searchfield
 .ticket_send_button_space {
   grid-row: 2;
   grid-column: 5 / span 2;
-  background-color: rgba(255, 255, 255, 0.399);
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  
 }
+
+.ticket_send_button_space button {
+  padding: 4.2vh 8.4vh;
+}
+
 .ticket_send_info_space {
   grid-row: 2;
   grid-column: 2 / span 2;
   background-color: rgba(255, 255, 255, 0.399);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.input_box{
+  /*height: 50%;
+  display: flex;
+  align-items: center; */
+  padding-left: 10px;
+}
+
+.input_box label{
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+
+/*====================================================================================
+adaptive parts
+=====================================================================================*/
+
+@media only screen and (min-width: 768px){
+  .expertpage_layout{
+    grid-template-columns: 40px 22% 1fr 20px 44% 2fr 40px;
+    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px; ;
+  }
+
+  .expertpage_layout h1{
+    font-size: 2vw;
+  }
+}
+
+
+
+@media only screen and (max-width: 992px){
+  .expertpage_layout{
+    grid-template-columns: 40px 22% 1fr 20px 44% 2fr 40px;
+    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px; ;
+  }
+
+  .expertpage_layout h1{
+    font-size: 2vw;
+  }
+
+  .expertpage_layout h3{
+    font-size: 2vw;
+  }
+
+  .expertpage_layout h4{
+    font-size: 2vw;
+  }
+
+  .expertpage_layout p{
+    font-size: 1.5vw;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .expertpage_layout{
+    grid-template-columns: 40px 22% 1fr 20px 44% 2fr 40px;
+    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px; ;
+  }
+}
+
+@media only screen and (max-width: 100vh){
+  .expertpage_layout{
+    grid-template-columns: 20px 50% 5fr 20px 20% 2fr 20px;
+    grid-template-rows: 20px 1fr 28% 10px 56% 2fr 20px; 
+  }
+
+  .ticket_list{
+    grid-row: 2/ span 2;
+    grid-column: 2/ span 5;
+    grid-template-columns: 20px 60% 6fr 15px 30% 3fr 20px;
+    grid-template-rows: 20px 1fr 80% 20px; 
+  }
+
+  .scrollspace{
+    grid-row: 5/ span 2;
+    grid-column: 2/ span 5;
+    grid-template-columns: 0px 50% 5fr 20px 20% 2fr 0px;
+    grid-template-rows: 0px 3fr 60% 10px 20% 1fr 0px; 
+  }
+
+  .ticket_info{
+    grid-template-columns: 10px 60% 3fr 20px 20% 1fr 10px;
+    grid-template-rows: 10px 1fr 10% 5px 8fr 80% 10px;
+  }
+
+  .ticket_send_options{
+    grid-template-columns: 10px 50% 2fr 10px 25% 1fr 10px;
+    grid-template-rows: 10px 70% 1fr 10px;
+  }
+
+  .ticket_send_button_space{
+    grid-row: 2/ span 2;
+  }
+  .ticket_send_info_space{
+    grid-row: 2/span 2;
+  }
+
+  .ticket_list_button_space{
+    grid-row: 2/ span 2;
+    grid-column: 5/ span 2;
+    grid-template-columns: 10px 30% 1fr 3px 30% 1fr 10px ;
+    grid-template-rows: 10px 70% 7fr 5px 20% 2fr 10px ;
+    align-items: top;
+    justify-content: stretch;
+    margin-left:  0px;
+    margin-right: 0px;
+    padding: 0;
+
+    /* Hier was alles nog niet op de juiste plek*/
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-left:  0px;
+    margin-right: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: transparent; */
+
+  }
+
+  /* .ticket_list_button_space button{
+    width: 100px;
+    height: 40px;
+  } */
+
+.ticket_list_button_left{
+  grid-row: 5/ span 2 ;
+  grid-column: 2/span 2 ;
+}
+.ticket_list_button_mid{
+  grid-row: 2/ span 2 ;
+  grid-column: 2/span 5 ;
+  justify-self: bottom;
+}
+.ticket_list_button_right{
+  grid-row: 5/span 2 ;
+  grid-column: 5/span 2;
+}
+
+  .ticket_list_info_space{
+    grid-row: 2/ span 2;
+    grid-column: 2/ span 2;
+  }
+
+  .ticket_info_button_space{
+    grid-row: 2/ span 2;
+    grid-column: 2/ span 5;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .ticket_info_button_space button, .ticket_info_button_space a {
+    width: 80px;
+    height: 100%;
+    margin-right: 3px;
+  }
+    
+  .ticket_info_button_space a button{ /* temporary: the button within an a tag needs to go*/
+    width: 100%;
+    height: 100%;
+  }
+
+  .ticket_info_info_space{
+    grid-row: 5/ span 2;
+    grid-column: 2/ span 5;
+  }
+
+
 }
