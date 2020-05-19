@@ -6,7 +6,7 @@ var UserSchema = new mongoose.Schema({
   password: String,
   isExpert: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   //    projects: [{
   //     type: mongoose.Schema.Types.ObjectId,

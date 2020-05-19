@@ -5,7 +5,7 @@
 var express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
-  User = require("../models/User.js"),
+  User = require("../models/user.js"),
   youtubeAPI = require("../controllers/youtube-api.js");
 
 //================================================================================
@@ -34,13 +34,17 @@ router.get("/under_construction", function (req, res) {
 // Expert User Routes
 //================================================================================
 
-router.get("/dashboard", function (req, res) {
-  async function waitRender() {
-    let apiData = await youtubeAPI();
-    res.render("expertpage.ejs", { data: apiData });
+//comment out middleware for dev reasons.
+router.get(
+  "/dashboard",
+  /*isLoggedIn,*/ function (req, res) {
+    async function waitRender() {
+      let apiData = await youtubeAPI();
+      res.render("expertpage.ejs", { data: apiData });
+    }
+    waitRender();
   }
-  waitRender();
-});
+);
 
 //================================================================================
 // Test routes
@@ -104,11 +108,20 @@ router.get("/login", function (req, res) {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/projectspage",
+    successRedirect: "back",
     failureRedirect: "/register",
   }),
   function (req, res) {}
 );
+
+//================================================================================
+// Logout routes
+//================================================================================
+
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("back");
+});
 
 //================================================================================
 // Middleware
