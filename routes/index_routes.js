@@ -75,20 +75,18 @@ router.get("/register", function (req, res) {
 
 // ------ Post ------ //
 router.post("/register", function (req, res) {
-  User.register(
-    new User({ username: req.body.username }),
-    req.body.password,
-    function (err, user) {
-      if (err) {
-        console.log(err);
-        res.redirect("/register");
-      } else {
-        passport.authenticate("local")(req, res, function () {
-          res.redirect("/");
-        });
-      }
+  let newUser = new User({ username: req.body.username });
+
+  User.register(newUser, req.body.password, function (err, user) {
+    if (err) {
+      console.log(err);
+      res.redirect("/register");
+    } else {
+      passport.authenticate("local")(req, res, function () {
+        res.redirect("back");
+      });
     }
-  );
+  });
 });
 
 //================================================================================
