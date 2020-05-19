@@ -4,7 +4,10 @@ const YTSearchDataSchema = new mongoose.Schema(
   {
     videoTitle: String,
     videoId: String,
-    videoDescription: String,
+    videoDescription: {
+      type: String,
+      default: "empty",
+    },
     viewCount: Number,
     channelTitle: String,
     channelId: String,

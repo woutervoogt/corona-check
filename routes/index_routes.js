@@ -1,3 +1,4 @@
+let dataOld = true;
 //================================================================================
 // Dependancies.
 //================================================================================
@@ -36,32 +37,63 @@ router.get("/under_construction", function (req, res) {
 //================================================================================
 
 router.get("/dashboard", function (req, res) {
-  let minusOneHourDate = new Date(Date.now() - 360); //3600000
-  YTSearchData.find(
-    {
-      createdAt: {
-        $lt: minusOneHourDate,
-      },
-    },
-    function (err, oldVideos) {
-      if (oldVideos.length !== 0) {
-        getNewData();
-        console.log("New Youtube Search Data");
-      }
-    }
-  );
+  console.log(dataOld);
+  if (dataOld === true) {
+    console.log("doet ie het");
+    setTimeout(() => {
+      dataOld = true;
+    }, 3600000);
+    getNewData().then(() => render());
+  } else {
+    console.log("nee");
+    render();
+  }
 
   async function getNewData() {
     await youtubeAPI.searchList().then(() => youtubeAPI.videoInfo());
+    return (dataOld = false);
   }
 
-  YTSearchData.find({}, function (err, allVideos) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("expertpage.ejs", { data: allVideos });
-    }
-  });
+  function render() {
+    YTSearchData.find({}, function (err, allVideos) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("expertpage.ejs", { data: allVideos });
+      }
+    });
+  }
+
+  // let minusOneHourDate = new Date(Date.now() - 360); //3600000
+
+  //   let minusOneHourDate = new Date(Date.now() - 360); //3600000
+  //   YTSearchData.find(
+  //     {
+  //       createdAt: {
+  //         $lt: minusOneHourDate,
+  //       },
+  //     },
+  //     function (err, oldVideos) {
+  //       if (err) {
+  //         console.log(err);
+  //       } else if (oldVideos.length) {
+  //         getNewData();
+  //         console.log("New Youtube Search Data");
+  //       }
+  //     }
+  //   );
+
+  //   async function getNewData() {
+  //     await youtubeAPI.searchList().then(() => youtubeAPI.videoInfo());
+  //   }
+
+  //   YTSearchData.find({}, function (err, allVideos) {
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       res.render("expertpage.ejs", { data: allVideos });
+  //     }
+  //   });
 });
 
 //================================================================================

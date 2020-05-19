@@ -23,21 +23,20 @@ youtubeAPI.searchList = async function () {
     // videoCategoryId: "News & Politics",     returns bad request api response
   });
   const apiData = res.data;
-  await refreshData(apiData);
-  // .then(() => true);
+  return refreshDataBase(apiData);
 };
 
-async function refreshData(apiData) {
-  YTData.deleteMany({}, function (err) {
+async function refreshDataBase(apiData) {
+  await YTData.deleteMany({}, function (err) {
     if (err) {
       console.log(err);
     } else {
-      saveToDatabase(apiData);
+      return saveToDatabase(apiData);
     }
   });
 }
 
-function saveToDatabase(data) {
+async function saveToDatabase(data) {
   for (let i = 0; i < data.items.length; i++) {
     const videoData = data.items[i];
     const newYTData = {
@@ -47,9 +46,11 @@ function saveToDatabase(data) {
       channelId: videoData.snippet.channelId,
       channelTitle: videoData.snippet.channelTitle,
     };
-    YTData.create(newYTData, function (err, newlyCreated) {
+    await YTData.create(newYTData, function (err, newlyCreated) {
       if (err) {
         console.log(err);
+      } else {
+        return newlyCreated;
       }
     });
   }
@@ -66,18 +67,13 @@ youtubeAPI.videoInfo = async function () {
           part: "snippet,statistics",
           id: foundData[i].videoId,
         });
-        console.log(foundData[i]._id);
-        YTData.update({ _id: foundData[i]._id }, { videoDescription: "2" });
-        // foundData[i].videoDescription = "1";
-        // foundData[i].save((err) => {
-        //   console.log(err);
-        // });
-        // console.log(foundData[i].videoDescription);
-        // foundData[i].videoDescription = res.data.items[i].snippet.description;
-        // foundData[i].viewCount = res.data.items[i].statistics.viewCount;
-        // foundData[i].save((err) => {
-        //   console.log(err);
-        // });
+        foundData[i].videoDescription = res.data.items[0].snippet.description;
+        foundData[i].viewCount = res.data.items[0].statistics.viewCount;
+        foundData[i].save(function (err) {
+          if (err) {
+            console.log(err);
+          }
+        });
         console.log(foundData[i].videoDescription);
       }
     }
