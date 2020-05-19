@@ -70,7 +70,7 @@ router.get("/test3", function (req, res) {
 
 // ------ Get ------ //
 router.get("/register", function (req, res) {
-  res.render("registerform.ejs");
+  res.render("registerpage.ejs");
 });
 
 // ------ Post ------ //
