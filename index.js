@@ -36,6 +36,7 @@ mongoose
 
 // ... bodyparser ...
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // ... passport ...
 app.use(
   expressSession({
