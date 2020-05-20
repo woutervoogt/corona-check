@@ -2,7 +2,7 @@
 // Dependancies.
 //================================================================================
 
-var express = require("express"),
+const express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
   User = require("../models/User.js"),
@@ -12,7 +12,7 @@ var express = require("express"),
 // Setting up dependancies
 //================================================================================
 
-var router = express.Router();
+const router = express.Router();
 
 //================================================================================
 // Index Routes
