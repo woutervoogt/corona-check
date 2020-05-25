@@ -1,5 +1,5 @@
 // ------ Adding dependancies ------
-var express = require("express"),
+const express = require("express"),
   bodyParser = require("body-parser"),
   dotEnv = require("dotenv").config(),
   mongoose = require("mongoose"),
@@ -11,12 +11,12 @@ var express = require("express"),
 
 // ------ Adding route dependancies ------
 
-var indexRoutes = require("./routes/index_routes.js");
+const indexRoutes = require("./routes/index_routes.js");
 
 /* ------ Setting up dependancies and connections ------ */
 
 // ... express ...
-var app = express();
+const app = express();
 
 // ... mongoose ...
 const dbLocation =

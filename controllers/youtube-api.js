@@ -9,57 +9,113 @@ const youtube = google.youtube({
   auth: process.env.APIKEY,
 });
 
+let youtubeAPI = {};
+
 // Get search list from youtube
-async function youtubeAPI() {
-  const res = await youtube.search.list({
+youtubeAPI.searchList = async function () {
+  const yTRes = await youtube.search.list({
     part: "id,snippet",
     maxResults: 50,
     type: "video",
     regionCode: "US",
     order: "viewCount",
-    q: "Covid 19",
-    // videoCategoryId: "News & Politics",     returns bad request api response
+    q: "Covid 19"
   });
-  const apiData = res.data;
-  refreshData(apiData);
-  return apiData; //temporary to show on webpage
-}
+  
+  const apiData = yTRes.data;
+  await refreshData(apiData);
+  
 
-function refreshData(apiData) {
-  YTData.deleteMany({}, function (err) {
+};
+
+async function refreshData(apiData) {
+  await YTData.deleteMany({}, async function (err) {
     if (err) {
       console.log(err);
     } else {
-      console.log("old data removed");
-      saveToDatabase(apiData);
+      await saveToDatabase(apiData);
     }
   });
 }
 
-function saveToDatabase(data) {
+async function saveToDatabase(data) {
   for (let i = 0; i < data.items.length; i++) {
+    
     const videoData = data.items[i];
-    videoId = videoData.id.videoId;
-    videoTitle = videoData.snippet.title;
-    videoDescription = videoData.snippet.description;
-    channelId = videoData.snippet.channelId;
-    channelTitle = videoData.snippet.channelTitle;
+    
     const newYTData = {
-      videoId: videoId,
-      videoTitle: videoTitle,
-      videoDescription: videoDescription,
-      channelId: channelId,
-      channelTitle: channelTitle,
+      videoId: videoData.id.videoId,
+      videoTitle: videoData.snippet.title,
+      channelId: videoData.snippet.channelId,
+      channelTitle: videoData.snippet.channelTitle,
     };
-    YTData.create(newYTData, function (err, newlyCreated) {
+
+
+    await YTData.create(newYTData, function (err, newlyCreated) {
       if (err) {
         console.log(err);
-      } else {
-        console.log("api data is saved");
+      }
+      else {
+        return console.log(i);
       }
     });
   }
 }
+
+youtubeAPI.videoInfo = async function () {
+
+  var myPromise = new Promise((myresolutionfunction, myrejectionfunction) => {  
+
+    YTData.find({}, async function (err, foundData) {
+      var myResultlist=[];
+      var myCountlist = [];
+      let yTIDList = foundData[0].videoId;
+      
+      for (let i = 1; i < foundData.length; i++) {
+        yTIDList = yTIDList + "," + foundData[i].videoId;
+      }
+      
+      const yTRes = await youtube.videos.list({
+          part: "snippet,statistics",
+          id: yTIDList
+      });
+
+      if (err) {
+          console.log(err);
+      } 
+      else {
+        for (let i = 0; i < foundData.length; i++) {
+          myCountlist.push(i);
+          YTData.updateOne({ _id: foundData[i]._id }, { videoDescription: yTRes.data.items[i].snippet.description, viewCount: yTRes.data.items[i].statistics.viewCount}, async function(err,updatedFile){
+              if (err){console.log("no update")}
+              else{
+                  return myResultlist.push(updatedFile);
+              } 
+          });
+        }
+        checkUpdate(0,myResultlist,myCountlist);  
+      }
+    });
+
+    function checkUpdate(a,arrayA,arrayB){
+
+      setTimeout( function() {
+        console.log(arrayB.length);
+          if (arrayA.length === arrayB.length){
+            myresolutionfunction(console.log("resolve"));
+            return;
+          }
+          else if(a>100){
+            myrejectionfunction(fail(a));
+          }
+          else { 
+            checkUpdate(a+1, arrayA, arrayB);
+          }
+      }, 250);
+    }
+  })
+return myPromise;
+};
 
 if (module === require.main) {
   youtubeAPI().catch(console.error);

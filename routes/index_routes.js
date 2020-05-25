@@ -2,17 +2,19 @@
 // Dependancies.
 //================================================================================
 
-var express = require("express"),
+const express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
   User = require("../models/user.js"),
+  YTSearchData = require("../models/yt-data"),
   youtubeAPI = require("../controllers/youtube-api.js");
 
 //================================================================================
 // Setting up dependancies
 //================================================================================
 
-var router = express.Router();
+const router = express.Router();
+let timer = true;
 
 //================================================================================
 // Index Routes
@@ -34,17 +36,41 @@ router.get("/under_construction", function (req, res) {
 // Expert User Routes
 //================================================================================
 
-//comment out middleware for dev reasons.
-router.get(
-  "/dashboard",
-  /*isLoggedIn,*/ function (req, res) {
-    async function waitRender() {
-      let apiData = await youtubeAPI();
-      res.render("expertpage.ejs", { data: apiData });
+router.get("/dashboard", async function (req, res) {
+  if (timer === true) {
+    timer = false;
+    setTimeout(function () {
+      timer = true;
+    }, 300000);
+
+    await updateRoute().then(async () => {
+      await youtubeAPI.videoInfo().then(async () => {
+        YTSearchData.find({}, async function (err, allVideos) {
+          // comment Alwin: Dit wacht nu niet op je update.
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("hij gaat via de else");
+            res.render("expertpage.ejs", { data: allVideos });
+          }
+        });
+      });
+    });
+
+    async function updateRoute() {
+      await youtubeAPI.searchList();
     }
-    waitRender();
+  } else {
+    YTSearchData.find({}, function (err, allVideos) {
+      // comment Alwin: Dit wacht nu niet op je update.
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("expertpage.ejs", { data: allVideos });
+      }
+    });
   }
-);
+});
 
 //================================================================================
 // Test routes
