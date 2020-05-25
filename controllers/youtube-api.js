@@ -15,7 +15,7 @@ let youtubeAPI = {};
 youtubeAPI.searchList = async function () {
   const yTRes = await youtube.search.list({
     part: "id,snippet",
-    maxResults: 45,
+    maxResults: 50,
     type: "video",
     regionCode: "US",
     order: "viewCount",
@@ -69,25 +69,22 @@ youtubeAPI.videoInfo = async function () {
     YTData.find({}, async function (err, foundData) {
       var myResultlist=[];
       var myCountlist = [];
-      let myString = "";
-      for (let i = 0; i < foundData.length; i++) {
-          myString = myString + foundData[i].videoId + "," ;
+      let yTIDList = foundData[0].videoId;
+      
+      for (let i = 1; i < foundData.length; i++) {
+        yTIDList = yTIDList + "," + foundData[i].videoId;
       }
-      console.log(myString);
-          const yTRes = await youtube.videos.list({
-              part: "snippet,statistics",
-              id: myString
-          });
+      
+      const yTRes = await youtube.videos.list({
+          part: "snippet,statistics",
+          id: yTIDList
+      });
+
       if (err) {
           console.log(err);
       } 
       else {
         for (let i = 0; i < foundData.length; i++) {
-          // const yTRes = await youtube.videos.list({
-          //     part: "snippet,statistics",
-          //     id: foundData[i].videoId,
-          // });
-          console.log(yTRes);
           myCountlist.push(i);
           YTData.updateOne({ _id: foundData[i]._id }, { videoDescription: yTRes.data.items[i].snippet.description, viewCount: yTRes.data.items[i].statistics.viewCount}, async function(err,updatedFile){
               if (err){console.log("no update")}
