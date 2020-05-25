@@ -18,6 +18,7 @@ const indexRoutes = require("./routes/index_routes.js");
 // ... express ...
 const app = express();
 
+
 // ... mongoose ...
 const dbLocation =
   process.env.DATABASELOCATION || "mongodb://localhost/corona_check";

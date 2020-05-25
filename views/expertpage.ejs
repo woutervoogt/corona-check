@@ -6,36 +6,49 @@
         <div class= "ticket_list_info_space">
             <!-- Hier komt een lijst met de tickets -->
             <div class="ticket_list_info_list_container">
-                <% for(var i=0; i<data.items.length; i++) {%>
-                    <div class="ticket_list_info_list_item">
-                        <h4><%= data.items[i].snippet.channelTitle%></h4>
-                        <h4><%= data.items[i].snippet.title%></h4>
+                <% for(var i=0; i<data.length; i++) {%>
+                    <div class="ticket_list_info_list_item" id="<%= data[i]._id %>">
+                        <h4><%= data[i].channelTitle%></h4>
+                        <h4><%= data[i].videoTitle%></h4>
                     </div>
                  <% } %>
             </div>
         </div>
         <div class="ticket_list_button_space">
-            <h1>Hier komen buttons te staan</h1>
+            <button class="ticket_list_button_left"></button>
+            <button class="ticket_list_button_mid"></button>
+            <button class="ticket_list_button_right"></button>
         </div>
     </div>
-    <div class="ticket_info">
-        <div class= "ticket_info_info_space">
-            <!-- Hier komt een frame met de info over de geselecteerde ticket -->
-            <h3>Channel: <%= data.items[0].snippet.channelTitle%></h3>
-            <h3>Video: <%= data.items[0].snippet.title%></h3>
-            <p>Video Description: <%= data.items[0].snippet.description%></p>
+    <div class="scrollspace">
+        <div class="ticket_info">
+            <div class= "ticket_info_info_space">
+                <!-- Hier komt een frame met de info over de geselecteerde ticket -->
+                <h3>Channel: <%= data[0].channelTitle%></h3>
+                <h3>Video: <%= data[0].videoTitle%></h3>
+                <p>Video Description: <%= data[40].videoDescription%></p>
+            </div>
+            <div class="ticket_info_button_space">
+                <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
+                <a href="https://www.youtube.com/watch?v=<%# VIDEO ID %>"><button>Go to video</button></a>
+                <button>Button 2</button>
+                <button>Button 3</button>
+            </div>
         </div>
-        <div class="ticket_info_button_space">
-            <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
-            <a href="https://www.youtube.com/watch?v=<%# VIDEO ID %>"><button>Go to video</button></a>
-        </div>
-    </div>
-    <div class="ticket_send_options">
-        <div class= "ticket_send_info_space">
-            <h1>De opties bij het opslaan</h1>
-        </div>
-        <div class="ticket_send_button_space">
-            <h1>Send</h1>
+        <div class="ticket_send_options">
+            <div class= "ticket_send_info_space">
+                <div class="input_box">
+                    <input id="first_checkbox" type="checkbox">
+                    <label for="first_checkbox">Hier komt optie 1</label>
+                </div>
+                <div class="input_box">
+                    <input id="second_checkbox" type="checkbox">
+                    <label for="second_checkbox">Hier komt optie 1</label>
+                </div>
+            </div>
+            <div class="ticket_send_button_space">
+                <button>Send</button>
+            </div>
         </div>
     </div>
 </div>
