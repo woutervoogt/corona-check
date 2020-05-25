@@ -61,7 +61,7 @@ app.use(function (req, res, next) {
 // ... static files ...
 app.use(express.static("stylesheets"));
 app.use(express.static("images"));
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 // ... Using router ...
 app.use(indexRoutes);

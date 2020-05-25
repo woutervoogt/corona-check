@@ -3,15 +3,18 @@
 
 <div class="expertpage_layout">
     <div class="ticket_list">
-        <div class= "ticket_list_info_space">
+        <div class="ticket_list_info_space">
             <!-- Hier komt een lijst met de tickets -->
             <div class="ticket_list_info_list_container">
                 <% for(var i=0; i<data.length; i++) {%>
-                    <div class="ticket_list_info_list_item" id="<%= data[i]._id %>">
-                        <h4><%= data[i].channelTitle%></h4>
-                        <h4><%= data[i].videoTitle%></h4>
-                    </div>
-                 <% } %>
+                <div class="ticket_list_info_list_item" id="<%= data[i]._id %>">
+                    <h4 class="ticket_list_item_channel"><%= data[i].channelTitle%></h4>
+                    <h4 class="ticket_list_item_video"><%= data[i].videoTitle%></h4>
+                    <span
+                        class="ticket_list_item_description ticket_list_item_hidden"><%= data[i].videoDescription%></span>
+                    <span class="ticket_list_item_views ticket_list_item_hidden"><%= data[i].viewCount%></span>
+                </div>
+                <% } %>
             </div>
         </div>
         <div class="ticket_list_button_space">
@@ -22,11 +25,15 @@
     </div>
     <div class="scrollspace">
         <div class="ticket_info">
-            <div class= "ticket_info_info_space">
+            <div class="ticket_info_info_space">
                 <!-- Hier komt een frame met de info over de geselecteerde ticket -->
-                <h3>Channel: <%= data[0].channelTitle%></h3>
-                <h3>Video: <%= data[0].videoTitle%></h3>
-                <p>Video Description: <%= data[40].videoDescription%></p>
+                <h3 class="ticket_info_channel_title">Channel: <span><%= data[0].channelTitle%></span></h3>
+                <h3 class="ticket_info_video_title">Video: <span><%= data[0].videoTitle%></span></h3>
+                <p class="ticket_info_views">Views: <span><%= data[0].videoCount%></span></p>
+                <p class="ticket_info_description">Video Description: <span>
+                        <%= data[0].videoDescription%> </span>
+                </p>
+
             </div>
             <div class="ticket_info_button_space">
                 <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
@@ -36,7 +43,7 @@
             </div>
         </div>
         <div class="ticket_send_options">
-            <div class= "ticket_send_info_space">
+            <div class="ticket_send_info_space">
                 <div class="input_box">
                     <input id="first_checkbox" type="checkbox">
                     <label for="first_checkbox">Hier komt optie 1</label>
@@ -53,4 +60,7 @@
     </div>
 </div>
 
+<script type="text/javascript" src="/js/ticket-info.js">
+
+</script>
 <%- include("partials/footer") %>
