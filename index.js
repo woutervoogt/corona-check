@@ -17,8 +17,10 @@ var indexRoutes = require("./routes/index_routes.js");
 
 /* ------ Setting up dependancies and connections ------ */
 
+
 // ... express ...   
 var app = express();
+
 
 // ... mongoose ...
 const dbLocation = process.env.DATABASELOCATION || "mongodb://localhost/corona_check";
