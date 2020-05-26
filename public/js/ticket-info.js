@@ -7,19 +7,25 @@ ticketListItems.forEach((e) => {
 });
 
 function showInfo() {
-  document.querySelector(
-    ".ticket_info_channel_title > span"
-  ).innerText = this.querySelector(".ticket_list_item_channel").innerText;
+  // ticketListItems is een Nodelist. IndexOf werkt alleen op een Array.
+  // Nodelist is static, dus mogelijk dat een veranderende lijst problemen oplevert.
+  // Mogelijke oplossing/verbetering: this.nodeParent.children.call( ???? )
+  let ticketlistItemArray = Array.from(ticketListItems);
 
-  document.querySelector(
-    ".ticket_info_video_title > span"
-  ).innerText = this.querySelector(".ticket_list_item_video").innerText;
+  let passDataIndex = ticketlistItemArray.indexOf(this);
 
-  document.querySelector(
-    ".ticket_info_description > span"
-  ).innerText = this.querySelector(".ticket_list_item_description").innerText;
+  document.querySelector(".ticket_info_channel_title > span").innerText =
+    passData[passDataIndex].channelTitle;
 
-  document.querySelector(
-    ".ticket_info_views > span"
-  ).innerText = this.querySelector(".ticket_list_item_views").innerText;
+  document.querySelector(".ticket_info_video_title > span").innerText =
+    passData[passDataIndex].videoTitle;
+
+  document.querySelector(".ticket_info_description > span").innerText =
+    passData[passDataIndex].videoDescription;
+
+  document.querySelector(".ticket_info_views > span").innerText =
+    passData[passDataIndex].viewCount;
+
+  document.querySelector(".ticket_info_button_space > a").href =
+    "https://www.youtube.com/watch?v=" + passData[passDataIndex].videoId;
 }
