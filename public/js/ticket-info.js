@@ -9,7 +9,7 @@ ticketListItems.forEach((e) => {
 function showInfo() {
   // ticketListItems is een Nodelist. IndexOf werkt alleen op een Array.
   // Nodelist is static, dus mogelijk dat een veranderende lijst problemen oplevert.
-  // Mogelijke oplossing/verbetering: this.nodeParent.children.call( ???? )
+  // Mogelijke oplossing/verbetering: let passDataIndex = Array.prototype.indexOf.call(this.parentNode.children,this);
   let ticketlistItemArray = Array.from(ticketListItems);
 
   let passDataIndex = ticketlistItemArray.indexOf(this);
