@@ -7,6 +7,7 @@ const express = require("express"),
   passport = require("passport"),
   User = require("../models/user.js"),
   YTSearchData = require("../models/yt-data"),
+  ReviewedChannel = require("../models/reviewed-channel"),
   youtubeAPI = require("../controllers/youtube-api.js");
 
 //================================================================================
@@ -70,6 +71,40 @@ router.get("/dashboard", async function (req, res) {
       }
     });
   }
+});
+
+router.post("/dashboard", function (req, res) {
+  //Als yt-data wordt ververst, kan de video info niet gevonden worden.
+  //Mogelijke oplossing; database opruimen moet losgemaakt worden van nieuwe info opvragen
+  YTSearchData.findById(req.body.dbID, function (err, foundVideo) {
+    if (err) {
+      console.log(err);
+    } else {
+      // const author = {
+      //   id: req.user._id,
+      //   name: req.user.username,
+      // };
+
+      const newReview = {
+        videoTitle: foundVideo.videoTitle,
+        videoId: foundVideo.videoId,
+        videoDescription: foundVideo.videoDescription,
+        viewCount: foundVideo.viewCount,
+        channelTitle: foundVideo.channelTitle,
+        channelId: foundVideo.channelId,
+        score: req.body.trustscore,
+        // author: author,
+      };
+
+      ReviewedChannel.create(newReview, function (err, newlyCreated) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("back");
+        }
+      });
+    }
+  });
 });
 
 //================================================================================

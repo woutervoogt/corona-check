@@ -41,17 +41,22 @@
         </div>
         <div class="ticket_send_options">
             <div class="ticket_send_info_space">
-                <div class="input_box">
-                    <input id="first_checkbox" type="checkbox">
-                    <label for="first_checkbox">Hier komt optie 1</label>
-                </div>
-                <div class="input_box">
-                    <input id="second_checkbox" type="checkbox">
-                    <label for="second_checkbox">Hier komt optie 1</label>
-                </div>
+                <form id="trustForm" method="POST" action="/dashboard">
+                    <div class="input_box">
+                        <input id="first_checkbox" type="radio" name="trustscore" value="trusted">
+                        <label for="first_checkbox">Trusted source</label>
+                    </div>
+                    <div class="input_box">
+                        <input id="second_checkbox" type="radio" name="trustscore" value="suspicious">
+                        <label for="second_checkbox">Suspicious source</label>
+                    </div>
+                    <div class="input_box">
+                        <input id="third_checkbox" type="hidden" name="dbID" value="">
+                    </div>
+                </form>
             </div>
             <div class="ticket_send_button_space">
-                <button>Send</button>
+                <button type="submit" form="trustForm">Send</button>
             </div>
         </div>
     </div>
