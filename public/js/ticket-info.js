@@ -1,3 +1,33 @@
+// ---- TICKET INFO SPACE LOGIC ---- //
+const ticketInfoVideoDetails = document.querySelector(
+  ".ticket_info_video_details"
+);
+const ticketInfoScore = document.querySelector(".ticket_info_score");
+const ticketInfoScoreExplanation = document.querySelector(
+  ".ticket_info_score_explanation"
+);
+
+const infoSpaceContent = {};
+
+infoSpaceContent.videoDetails = function () {
+  ticketInfoScore.classList.add("ticket_info_hidden");
+  ticketInfoVideoDetails.classList.remove("ticket_info_hidden");
+  ticketInfoScoreExplanation.classList.add("ticket_info_hidden");
+};
+
+infoSpaceContent.score = function () {
+  ticketInfoScore.classList.remove("ticket_info_hidden");
+  ticketInfoVideoDetails.classList.add("ticket_info_hidden");
+  ticketInfoScoreExplanation.classList.add("ticket_info_hidden");
+};
+
+infoSpaceContent.explanation = function () {
+  ticketInfoScoreExplanation.classList.remove("ticket_info_hidden");
+  ticketInfoScore.classList.add("ticket_info_hidden");
+  ticketInfoVideoDetails.classList.add("ticket_info_hidden");
+};
+
+// ---- VIDEO DETAILS LOGIC ---- //
 const ticketListItems = document.querySelectorAll(
   ".ticket_list_info_list_item"
 );
