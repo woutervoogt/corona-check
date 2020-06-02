@@ -15,7 +15,7 @@ const express = require("express"),
 //================================================================================
 
 const router = express.Router();
-let timer = true;
+let timer = false;
 
 //================================================================================
 // Index Routes
@@ -93,7 +93,7 @@ router.post("/dashboard", function (req, res) {
         channelId: foundVideo.channelId,
         score: req.body.trustscore,
         explanation: req.body.score_explanation,
-        // publish: req.body.publish,
+        publish: req.body.publish,
         // author: author,
       };
 

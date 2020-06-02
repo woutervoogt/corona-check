@@ -63,14 +63,14 @@
         </div>
         <div class="ticket_send_options">
             <div class="ticket_send_info_space">
-                    <!-- <div class="input_box">
-                        <input id="first_checkbox" type="checkbox" name="" value="">
-                        <label for="first_checkbox">Hier komt optie 1</label>
+                    <div class="input_box">
+                        <input id="first_checkbox" type="checkbox" name="publish" value="false" form="reviewForm">
+                        <label for="first_checkbox">Save as draft</label>
                     </div>
                     <div class="input_box">
-                        <input id="second_checkbox" type="checkbox" name="" value="">
-                        <label for="second_checkbox">Hier komt optie 2</label>
-                    </div> -->
+                        <input id="second_checkbox" type="checkbox" name="publish" value="true" form="reviewForm">
+                        <label for="second_checkbox">Publish review</label>
+                    </div>
             </div>
             <div class="ticket_send_button_space">
                 <button type="submit" form="reviewForm">Send</button>
@@ -79,7 +79,6 @@
     </div>
 </div>
 <script type="text/javascript">
-// EDITOR ZIET DIT ALS EEN PROBLEEM, MAAR DAT IS HET NIET. OF TOCH WEL?
     const passData = <%- JSON.stringify(data)%>;
 </script>
 <script type="text/javascript" src="/js/ticket-info.js"></script>
