@@ -22,8 +22,8 @@
     </div>
     <div class="scrollspace">
         <div class="ticket_info">
-            <div class="ticket_info_info_space">
-                <div class="ticket_info_video_details">
+            <form class="ticket_info_info_space" id="reviewForm" method="POST" action="/dashboard" target="_self">
+                <div class="ticket_info_video_details" >
                     <!-- Hier komt een frame met de info over de geselecteerde ticket -->
                     <h3 class="ticket_info_channel_title">Channel: <span><%= data[0].channelTitle%></span></h3>
                     <h3 class="ticket_info_video_title">Video: <span><%= data[0].videoTitle%></span></h3>
@@ -46,15 +46,13 @@
                         <input id="hidden_input" type="hidden" name="dbID" value="">
                     </div>
                 </div>
+
                 <div class="ticket_info_score_explanation ticket_info_hidden">
                     <div class="input_box">
-                        <textarea id="first_textarea" name="score_explanation">
-
-                        </textarea>
+                        <textarea id="first_textarea" name="score_explanation"></textarea>
                     </div>
-                    
                 </div>
-            </div>
+            </form>
             <div class="ticket_info_button_space">
                 <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
                 <a href="https://www.youtube.com/watch?v=<%= data[0].videoId%>"><button>Go to video</button></a>
@@ -65,14 +63,14 @@
         </div>
         <div class="ticket_send_options">
             <div class="ticket_send_info_space">
-                    <div class="input_box">
+                    <!-- <div class="input_box">
                         <input id="first_checkbox" type="checkbox" name="" value="">
                         <label for="first_checkbox">Hier komt optie 1</label>
                     </div>
                     <div class="input_box">
                         <input id="second_checkbox" type="checkbox" name="" value="">
                         <label for="second_checkbox">Hier komt optie 2</label>
-                    </div>
+                    </div> -->
             </div>
             <div class="ticket_send_button_space">
                 <button type="submit" form="reviewForm">Send</button>

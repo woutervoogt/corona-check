@@ -84,7 +84,6 @@ router.post("/dashboard", function (req, res) {
       //   id: req.user._id,
       //   name: req.user.username,
       // };
-
       const newReview = {
         videoTitle: foundVideo.videoTitle,
         videoId: foundVideo.videoId,
@@ -93,6 +92,8 @@ router.post("/dashboard", function (req, res) {
         channelTitle: foundVideo.channelTitle,
         channelId: foundVideo.channelId,
         score: req.body.trustscore,
+        explanation: req.body.score_explanation,
+        // publish: req.body.publish,
         // author: author,
       };
 
@@ -100,6 +101,7 @@ router.post("/dashboard", function (req, res) {
         if (err) {
           console.log(err);
         } else {
+          console.log(newlyCreated);
           res.redirect("back");
         }
       });

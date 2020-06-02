@@ -59,5 +59,5 @@ function showInfo() {
   document.querySelector(".ticket_info_button_space > a").href =
     "https://www.youtube.com/watch?v=" + passData[passDataIndex].videoId;
 
-  document.querySelector("#third_checkbox").value = passData[passDataIndex]._id;
+  document.querySelector("#hidden_input").value = passData[passDataIndex]._id;
 }

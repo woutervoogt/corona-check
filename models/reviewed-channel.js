@@ -10,6 +10,8 @@ const ReviewedChannelSchema = new mongoose.Schema(
     channelId: String,
 
     score: String,
+    explanation: String,
+    publish: Boolean,
 
     author: {
       id: {
