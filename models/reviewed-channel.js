@@ -18,7 +18,7 @@ const ReviewedChannelSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
-      username: String,
+      name: String,
     },
   },
   { timestamps: true }

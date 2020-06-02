@@ -74,17 +74,17 @@ router.get("/dashboard", authentication.isExpert, async function (req, res) {
   }
 });
 
-router.post("/dashboard", function (req, res) {
+router.post("/dashboard", authentication.isExpert, function (req, res) {
   //Als yt-data wordt ververst, kan de video info niet gevonden worden.
   //Mogelijke oplossing; database opruimen moet losgemaakt worden van nieuwe info opvragen
   YTSearchData.findById(req.body.dbID, function (err, foundVideo) {
     if (err) {
       console.log(err);
     } else {
-      // const author = {
-      //   id: req.user._id,
-      //   name: req.user.username,
-      // };
+      const author = {
+        id: req.user._id,
+        name: req.user.username,
+      };
       const newReview = {
         videoTitle: foundVideo.videoTitle,
         videoId: foundVideo.videoId,
@@ -95,7 +95,7 @@ router.post("/dashboard", function (req, res) {
         score: req.body.trustscore,
         explanation: req.body.score_explanation,
         publish: req.body.publish,
-        // author: author,
+        author: author,
       };
 
       ReviewedChannel.create(newReview, function (err, newlyCreated) {
