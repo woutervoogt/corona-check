@@ -3,7 +3,8 @@
 
 <div class="expertpage_layout">
     <div class="ticket_list">
-        <div class="ticket_list_info_space">
+        <h5 class="info_title">Tickets</h5>
+        <div class= "ticket_list_info_space">
             <!-- Hier komt een lijst met de tickets -->
             <div class="ticket_list_info_list_container">
                 <% for(var i=0; i<data.length; i++) {%>
@@ -22,6 +23,7 @@
     </div>
     <div class="scrollspace">
         <div class="ticket_info">
+            <h5 class="info_title">Informatie</h5>
             <form class="ticket_info_info_space" id="reviewForm" method="POST" action="/dashboard" target="_self">
                 <div class="ticket_info_video_details" >
                     <!-- Hier komt een frame met de info over de geselecteerde ticket -->
