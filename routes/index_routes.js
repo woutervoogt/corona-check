@@ -8,7 +8,8 @@ const express = require("express"),
   User = require("../models/user.js"),
   YTSearchData = require("../models/yt-data"),
   ReviewedChannel = require("../models/reviewed-channel"),
-  youtubeAPI = require("../controllers/youtube-api.js");
+  youtubeAPI = require("../controllers/youtube-api.js"),
+  authentication = require("../controllers/authentication.js");
 
 //================================================================================
 // Setting up dependancies
@@ -37,7 +38,7 @@ router.get("/under_construction", function (req, res) {
 // Expert User Routes
 //================================================================================
 
-router.get("/dashboard", async function (req, res) {
+router.get("/dashboard", authentication.isExpert, async function (req, res) {
   if (timer === true) {
     timer = false;
     setTimeout(function () {

@@ -51,7 +51,7 @@ async function saveToDatabase(data) {
       if (err) {
         console.log(err);
       } else {
-        return console.log(i);
+        return i;
       }
     });
   }
