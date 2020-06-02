@@ -5,7 +5,7 @@ const express = require("express"),
   mongoose = require("mongoose"),
   expressSession = require("express-session"),
   passport = require("passport"),
-  User = require("./models/User.js"),
+  User = require("./models/user.js"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose");
 
@@ -17,7 +17,6 @@ const indexRoutes = require("./routes/index_routes.js");
 
 // ... express ...
 const app = express();
-
 
 // ... mongoose ...
 const dbLocation =
@@ -37,6 +36,7 @@ mongoose
 
 // ... bodyparser ...
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // ... passport ...
 app.use(
   expressSession({
@@ -61,7 +61,7 @@ app.use(function (req, res, next) {
 // ... static files ...
 app.use(express.static("stylesheets"));
 app.use(express.static("images"));
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 // ... Using router ...
 app.use(indexRoutes);

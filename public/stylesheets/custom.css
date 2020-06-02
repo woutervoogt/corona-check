@@ -1,3 +1,9 @@
+/* WOUTERS TOEVOEGINGEN */
+.ticket_list_item_hidden {
+  display: none;
+}
+/* EINDE WOUTERS TOEVOEGINGEN */
+
 .navbarless_full {
   background-color: #e0e0e0;
   height: calc(100vh - 56px);
@@ -153,11 +159,11 @@ showpage
   transition: opacity 1.5s 0.5s;
 }
 
-.good_list, .bad_list{
+.good_list,
+.bad_list {
   height: 80%;
   width: 30vw;
   background-color: blue;
-
 }
 
 /*====================================================================================
@@ -225,7 +231,7 @@ expertpage
   align-items: stretch;
 }
 
-.expertpage_layout h1{
+.expertpage_layout h1 {
   font-size: 1vw;
 }
 
@@ -301,7 +307,6 @@ expertpage
   justify-items: stretch;
   margin-left: 20px;
   margin-right: 20px;
-
 }
 
 .ticket_list_button_left{
@@ -375,7 +380,8 @@ border-radius: 5px;
 border: none;
 }
 
-.ticket_info_button_space a button{ /* temporary: the button within an a tag needs to go*/
+.ticket_info_button_space a button {
+  /* temporary: the button within an a tag needs to go*/
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -401,8 +407,6 @@ border: none;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
-  
 }
 
 .ticket_send_button_space button {
@@ -424,14 +428,14 @@ border: none;
 
 }
 
-.input_box{
+.input_box {
   /*height: 50%;
   display: flex;
   align-items: center; */
   padding-left: 10px;
 }
 
-.input_box label{
+.input_box label {
   margin-bottom: 0px;
   margin-left: 10px;
 }
@@ -440,13 +444,13 @@ border: none;
 adaptive parts
 =====================================================================================*/
 
-@media only screen and (min-width: 768px){
-  .expertpage_layout{
+@media only screen and (min-width: 768px) {
+  .expertpage_layout {
     grid-template-columns: 40px 22% 1fr 20px 44% 2fr 40px;
-    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px; ;
+    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px;
   }
 
-  .expertpage_layout h1{
+  .expertpage_layout h1 {
     font-size: 2vw;
   }
 
@@ -471,11 +475,11 @@ adaptive parts
     grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px; ;
   }
 
-  .expertpage_layout h1{
+  .expertpage_layout h1 {
     font-size: 2vw;
   }
 
-  .expertpage_layout h3{
+  .expertpage_layout h3 {
     font-size: 2vw;
   }
 
@@ -483,7 +487,7 @@ adaptive parts
     font-size: 1.5vw;
   }
 
-  .expertpage_layout p{
+  .expertpage_layout p {
     font-size: 1.5vw;
   }
 }
@@ -495,41 +499,41 @@ adaptive parts
   }
 }
 
-@media only screen and (max-width: 100vh){
-  .expertpage_layout{
+@media only screen and (max-width: 100vh) {
+  .expertpage_layout {
     grid-template-columns: 20px 50% 5fr 20px 20% 2fr 20px;
-    grid-template-rows: 20px 1fr 28% 10px 56% 2fr 20px; 
+    grid-template-rows: 20px 1fr 28% 10px 56% 2fr 20px;
   }
 
-  .ticket_list{
-    grid-row: 2/ span 2;
-    grid-column: 2/ span 5;
+  .ticket_list {
+    grid-row: 2 / span 2;
+    grid-column: 2 / span 5;
     grid-template-columns: 20px 60% 6fr 15px 30% 3fr 20px;
-    grid-template-rows: 20px 1fr 80% 20px; 
+    grid-template-rows: 20px 1fr 80% 20px;
   }
 
-  .scrollspace{
-    grid-row: 5/ span 2;
-    grid-column: 2/ span 5;
+  .scrollspace {
+    grid-row: 5 / span 2;
+    grid-column: 2 / span 5;
     grid-template-columns: 0px 50% 5fr 20px 20% 2fr 0px;
-    grid-template-rows: 0px 3fr 60% 10px 20% 1fr 0px; 
+    grid-template-rows: 0px 3fr 60% 10px 20% 1fr 0px;
   }
 
-  .ticket_info{
+  .ticket_info {
     grid-template-columns: 10px 60% 3fr 20px 20% 1fr 10px;
     grid-template-rows: 10px 1fr 10% 5px 8fr 80% 10px;
   }
 
-  .ticket_send_options{
+  .ticket_send_options {
     grid-template-columns: 10px 50% 2fr 10px 25% 1fr 10px;
     grid-template-rows: 10px 70% 1fr 10px;
   }
 
-  .ticket_send_button_space{
-    grid-row: 2/ span 2;
+  .ticket_send_button_space {
+    grid-row: 2 / span 2;
   }
-  .ticket_send_info_space{
-    grid-row: 2/span 2;
+  .ticket_send_info_space {
+    grid-row: 2 / span 2;
   }
 
   .ticket_list_button_space{
@@ -552,7 +556,6 @@ adaptive parts
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: transparent; */
-
   }
 
   /* .ticket_list_button_space button{
@@ -579,14 +582,14 @@ adaptive parts
   justify-self: stretch;
 }
 
-  .ticket_list_info_space{
-    grid-row: 2/ span 2;
-    grid-column: 2/ span 2;
+  .ticket_list_info_space {
+    grid-row: 2 / span 2;
+    grid-column: 2 / span 2;
   }
 
-  .ticket_info_button_space{
-    grid-row: 2/ span 2;
-    grid-column: 2/ span 5;
+  .ticket_info_button_space {
+    grid-row: 2 / span 2;
+    grid-column: 2 / span 5;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
@@ -594,20 +597,22 @@ adaptive parts
     background-color: rgba(255, 255, 255, 0);
   }
 
-  .ticket_info_button_space button, .ticket_info_button_space a {
+  .ticket_info_button_space button,
+  .ticket_info_button_space a {
     width: 80px;
     height: 100%;
     margin-right: 3px;
   }
-    
-  .ticket_info_button_space a button{ /* temporary: the button within an a tag needs to go*/
+
+  .ticket_info_button_space a button {
+    /* temporary: the button within an a tag needs to go*/
     width: 100%;
     height: 100%;
   }
 
-  .ticket_info_info_space{
-    grid-row: 5/ span 2;
-    grid-column: 2/ span 5;
+  .ticket_info_info_space {
+    grid-row: 5 / span 2;
+    grid-column: 2 / span 5;
   }
 
   .ticket_send_button_space button {

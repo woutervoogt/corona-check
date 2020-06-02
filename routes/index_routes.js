@@ -5,7 +5,7 @@
 const express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
-  User = require("../models/User.js"),
+  User = require("../models/user.js"),
   YTSearchData = require("../models/yt-data"),
   youtubeAPI = require("../controllers/youtube-api.js");
 
@@ -13,8 +13,8 @@ const express = require("express"),
 // Setting up dependancies
 //================================================================================
 
-var router = express.Router();
-var timer= true;
+const router = express.Router();
+let timer = true;
 
 //================================================================================
 // Index Routes
@@ -37,48 +37,40 @@ router.get("/under_construction", function (req, res) {
 //================================================================================
 
 router.get("/dashboard", async function (req, res) {
+  if (timer === true) {
+    timer = false;
+    setTimeout(function () {
+      timer = true;
+    }, 300000);
 
-
-      if (timer === true) {
-        timer = false;
-        setTimeout(function(){ timer = true; }, 300000);
-
-        await updateRoute().then(async ()=>{
-          await youtubeAPI.videoInfo().then(async ()=>{
-          YTSearchData.find({}, async function (err, allVideos) { // comment Alwin: Dit wacht nu niet op je update.
-            if (err) {
-              console.log(err);
-            } 
-            else {
-              console.log("hij gaat via de else");
-              res.render("expertpage.ejs", { data: allVideos });
-            }
-     
-      });
-        });
-      });
-
-        async function updateRoute(){
-          await youtubeAPI.searchList()
-
-
-
-          
-        }
-
-      }  
-      else{
-        YTSearchData.find({}, function (err, allVideos) { // comment Alwin: Dit wacht nu niet op je update.
+    await updateRoute().then(async () => {
+      await youtubeAPI.videoInfo().then(async () => {
+        YTSearchData.find({}, async function (err, allVideos) {
+          // comment Alwin: Dit wacht nu niet op je update.
           if (err) {
             console.log(err);
           } else {
+            console.log("hij gaat via de else");
             res.render("expertpage.ejs", { data: allVideos });
           }
         });
-      }
-    
-});
+      });
+    });
 
+    async function updateRoute() {
+      await youtubeAPI.searchList();
+    }
+  } else {
+    YTSearchData.find({}, function (err, allVideos) {
+      // comment Alwin: Dit wacht nu niet op je update.
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("expertpage.ejs", { data: allVideos });
+      }
+    });
+  }
+});
 
 //================================================================================
 // Test routes
@@ -113,20 +105,18 @@ router.get("/register", function (req, res) {
 
 // ------ Post ------ //
 router.post("/register", function (req, res) {
-  User.register(
-    new User({ username: req.body.username }),
-    req.body.password,
-    function (err, user) {
-      if (err) {
-        console.log(err);
-        res.redirect("/register");
-      } else {
-        passport.authenticate("local")(req, res, function () {
-          res.redirect("/");
-        });
-      }
+  let newUser = new User({ username: req.body.username });
+
+  User.register(newUser, req.body.password, function (err, user) {
+    if (err) {
+      console.log(err);
+      res.redirect("/register");
+    } else {
+      passport.authenticate("local")(req, res, function () {
+        res.redirect("back");
+      });
     }
-  );
+  });
 });
 
 //================================================================================
@@ -144,11 +134,20 @@ router.get("/login", function (req, res) {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/projectspage",
+    successRedirect: "back",
     failureRedirect: "/register",
   }),
   function (req, res) {}
 );
+
+//================================================================================
+// Logout routes
+//================================================================================
+
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("back");
+});
 
 //================================================================================
 // Middleware
