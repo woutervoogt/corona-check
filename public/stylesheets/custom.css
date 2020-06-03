@@ -58,6 +58,7 @@ showpage
 .tri_panel_right {
   height: calc(100vh - 56px);
   width: 100vw;
+  max-width: 2000px;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -677,4 +678,18 @@ adaptive parts
 .scrollspace button:hover {
   background-color: rgb(110, 224, 213);
   color: rgb(20, 20, 20);
+}
+
+@media only screen and (min-width: 2000px) {
+  #janus_canvas {
+    left: 0;
+  }
+
+  .tri_panel,
+  .tri_panel_left,
+  .tri_panel_right {
+    border-left: solid black calc((100vw - 2000px) / 2);
+    border-right: solid green calc((100vw - 2000px) / 2);
+    box-sizing: content-box;
+  }
 }
