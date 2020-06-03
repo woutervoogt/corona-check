@@ -10,42 +10,104 @@ var myList = {
 <div class="tri_panel">
     <div class="left_panel">
         <div class="good_list">
-            <h1>betrouwbaar</h1>
-            <% for (i=0; i<myList.good.length; i++) {%>
-                <div>
-                    <h1>Dit is <%=myList.good[i]%></h1>
+            <!-- <%#- include("partials/ticket-list", {listItems: myList.good})%> -->
+            <div class="ticket_list">
+                <h5 class="info_title">Trusted Sources</h5>
+                <div class= "ticket_list_info_space">
+                    <!-- Hier komt een lijst met de tickets -->
+                    <div class="ticket_list_info_list_container">
+                        <% for(var i=0; i<myList.length; i++) {%>
+                        <div class="ticket_list_info_list_item" id="<%= myList.good[i] %>">
+                            <h4 class="ticket_list_item_channel"><%= myList.good[i]%></h4>
+                            <h4 class="ticket_list_item_video"><%= myList.good[i]%></h4>
+                        </div>
+                        <% } %>
+                    </div>
                 </div>
-            <%}%>
+            </div>    
         </div>
+
         <div class="hidden_div_temp_container">
             <div class="hidden_div_temp">
-                <h1>Hallo dit is left</h1>
+                <div class="scrollspace">
+                    <div class="ticket_info">
+                        <h5 class="info_title">Informatie</h5>
+                        <div class="ticket_info_info_space">
+                            <div class="ticket_info_video_details" >
+                                <!-- Hier komt een frame met de info over de geselecteerde ticket -->
+                                <h3 class="ticket_info_channel_title">Channel: <span><%= myList.good[0]%></span></h3>
+                                <h3 class="ticket_info_video_title">Video: <span><%= myList.good[0]%></span></h3>
+                                <p class="ticket_info_views">Views: <span><%= myList.good[0]%></span></p>
+                                <p class="ticket_info_description">Video Description: <span>
+                                        <%= myList.good[0]%> </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ticket_info_button_space">
+                            <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
+                            <a href="https://www.youtube.com/watch?v=<%#= myList[0].videoId%>"><button>Go to video</button></a>
+                            <button onclick="infoSpaceContent.videoDetails()">Show more info</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </div>        
     </div>
+
     <div class="middle_panel">
         <canvas id="janus_canvas" width="400"></canvas>
     </div>
+
     <div class="right_panel">
-        
         <div class="bad_list">
-            <h1>onbetrouwbaar</h1>
-            <% for (i=0; i<myList.bad.length; i++) {%>
-                <div>
-                    <h1>Dit is <%=myList.bad[i]%></h1>
+            <div class="ticket_list">
+                <h5 class="info_title">Suspicious Sources</h5>
+                <div class="ticket_list_info_space">
+                    <!-- Hier komt een lijst met de tickets -->
+                    <div class="ticket_list_info_list_container">
+                        <% for(var i=0; i<myList.length; i++) {%>
+                        <div class="ticket_list_info_list_item" id="<%= myList.bad[i] %>">
+                            <h4 class="ticket_list_item_channel"><%= myList.bad[i]%></h4>
+                            <h4 class="ticket_list_item_video"><%= myList.bad[i]%></h4>
+                        </div>
+                        <% } %>
+                    </div>
                 </div>
-            <%}%>
+            </div>  
         </div>
+
         <div class="hidden_div_temp_container">
             <div class="hidden_div_temp">
-                <h1>Hallo dit is right</h1>
-            </div>
+                <div class="scrollspace">
+                    <div class="ticket_info">
+                        <h5 class="info_title">Informatie</h5>
+                        <div class="ticket_info_info_space">
+                            <div class="ticket_info_video_details" >
+                                <!-- Hier komt een frame met de info over de geselecteerde ticket -->
+                                <h3 class="ticket_info_channel_title">Channel: <span><%= myList.bad[0]%></span></h3>
+                                <h3 class="ticket_info_video_title">Video: <span><%= myList.bad[0]%></span></h3>
+                                <p class="ticket_info_views">Views: <span><%= myList.bad[0]%></span></p>
+                                <p class="ticket_info_description">Video Description: <span>
+                                        <%= myList.bad[0]%> </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ticket_info_button_space">
+                            <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
+                            <a href="https://www.youtube.com/watch?v=<%#= myList[0].videoId%>"><button>Go to video</button></a>
+                            <button onclick="infoSpaceContent.videoDetails()">Show more info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </div>
     </div>
 </div>
 
-<script>
 
+
+
+<script>
 
 var c = document.getElementById("janus_canvas");
 var ctx = c.getContext("2d");

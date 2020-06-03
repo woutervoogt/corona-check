@@ -161,9 +161,18 @@ showpage
 
 .good_list,
 .bad_list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   height: 80%;
   width: 30vw;
-  background-color: blue;
+  /* background-color: blue; */
+}
+
+.good_list .ticket_list,
+.bad_list .ticket_list {
+  grid-row: 1;
+  grid-column: 1;
 }
 
 /*====================================================================================
@@ -258,7 +267,8 @@ expertpage
   justify-content: stretch;
 }
 
-.info_title{ /* Deze is een beetje lelijk achteraf toegevoegd. Kan mooier*/
+.info_title {
+  /* Deze is een beetje lelijk achteraf toegevoegd. Kan mooier*/
   grid-row: 1;
   grid-column: 2;
   justify-self: start;
@@ -271,7 +281,7 @@ expertpage
 
 .ticket_info {
   /* background-color: rgb(80, 82, 80); */
-  grid-row: 2/ span 2;
+  grid-row: 2 / span 2;
   grid-column: 2 / span 5;
   display: grid;
   grid-template-columns: 20px 40% 4fr 20px 10% 1fr 20px;
@@ -279,11 +289,11 @@ expertpage
   align-items: stretch;
   justify-content: stretch;
   border-radius: 10px;
-
 }
+
 .ticket_send_options {
   /* background-color: rgb(80, 82, 80); */
-  grid-row: 5/ span 2;
+  grid-row: 5 / span 2;
   grid-column: 2 / span 5;
   display: grid;
   grid-template-columns: 20px 40% 4fr 20px 10% 1fr 20px;
@@ -299,7 +309,7 @@ expertpage
   grid-row: 5 / span 2;
   grid-column: 2;
   background-color: rgba(255, 255, 255, 0.399);
-  background-color: rgba(255, 255, 255, 0); 
+  background-color: rgba(255, 255, 255, 0);
   display: grid;
   grid-template-columns: 25% 50% 25%;
   grid-template-rows: 100%;
@@ -309,20 +319,20 @@ expertpage
   margin-right: 20px;
 }
 
-.ticket_list_button_left{
+.ticket_list_button_left {
   background-image: url("/download.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
   border: 0px;
 }
-.ticket_list_button_mid{
+.ticket_list_button_mid {
   margin-left: 5px;
   margin-right: 5px;
   border: none;
   border-radius: 5px;
 }
-.ticket_list_button_right{
+.ticket_list_button_right {
   background-image: url("/download_right.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -355,7 +365,7 @@ expertpage
   margin-bottom: 5px;
 }
 
-.ticket_list_info_list_item h4{
+.ticket_list_info_list_item h4 {
   margin: 10px;
 }
 
@@ -373,11 +383,12 @@ expertpage
   align-items: center;
 }
 
-.ticket_info_button_space button, .ticket_info_button_space a {
-width: 100%;
-height: 50px;
-border-radius: 5px;
-border: none;
+.ticket_info_button_space button,
+.ticket_info_button_space a {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
 }
 
 .ticket_info_button_space a button {
@@ -425,7 +436,6 @@ border: none;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 10px;
-
 }
 
 .input_box {
@@ -454,25 +464,23 @@ adaptive parts
     font-size: 2vw;
   }
 
-  .expertpage_layout h3{
+  .expertpage_layout h3 {
     font-size: 2vw;
   }
 
-  .expertpage_layout h4{
+  .expertpage_layout h4 {
     font-size: 1.5vw;
   }
 
-  .expertpage_layout p{
+  .expertpage_layout p {
     font-size: 1.5vw;
   }
 }
 
-
-
-@media only screen and (max-width: 992px){
-  .expertpage_layout{
+@media only screen and (max-width: 992px) {
+  .expertpage_layout {
     grid-template-columns: 20px 22% 1fr 20px 44% 2fr 20px;
-    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px; ;
+    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px;
   }
 
   .expertpage_layout h1 {
@@ -483,7 +491,7 @@ adaptive parts
     font-size: 2vw;
   }
 
-  .expertpage_layout h4{
+  .expertpage_layout h4 {
     font-size: 1.5vw;
   }
 
@@ -492,10 +500,10 @@ adaptive parts
   }
 }
 
-@media only screen and (max-width: 1200px){
-  .expertpage_layout{
+@media only screen and (max-width: 1200px) {
+  .expertpage_layout {
     grid-template-columns: 30px 22% 1fr 20px 44% 2fr 30px;
-    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px; ;
+    grid-template-rows: 20px 1fr 56% 20px 28% 1fr 20px;
   }
 }
 
@@ -536,13 +544,13 @@ adaptive parts
     grid-row: 2 / span 2;
   }
 
-  .ticket_list_button_space{
-    grid-row: 2/ span 2;
-    grid-column: 5/ span 2;
-    grid-template-columns: 10px 30% 1fr 3px 30% 1fr 10px ;
-    grid-template-rows: 10px 35% 7fr 5px 10% 2fr 10px ;
+  .ticket_list_button_space {
+    grid-row: 2 / span 2;
+    grid-column: 5 / span 2;
+    grid-template-columns: 10px 30% 1fr 3px 30% 1fr 10px;
+    grid-template-rows: 10px 35% 7fr 5px 10% 2fr 10px;
     align-items: top;
-    margin-left:  0px;
+    margin-left: 0px;
     margin-right: 0px;
     padding: 0;
 
@@ -563,24 +571,24 @@ adaptive parts
     height: 40px;
   } */
 
-.ticket_list_button_left{
-  grid-row: 5/ span 2 ;
-  grid-column: 2/span 2 ;
-  justify-self: stretch;
-}
-.ticket_list_button_mid{
-  grid-row: 2/ span 2 ;
-  grid-column: 2/span 5 ;
-  align-self: end;
-  height: 35%;
-  border: 0px;
-  border-radius: 5px;
-}
-.ticket_list_button_right{
-  grid-row: 5/span 2 ;
-  grid-column: 5/span 2;
-  justify-self: stretch;
-}
+  .ticket_list_button_left {
+    grid-row: 5 / span 2;
+    grid-column: 2 / span 2;
+    justify-self: stretch;
+  }
+  .ticket_list_button_mid {
+    grid-row: 2 / span 2;
+    grid-column: 2 / span 5;
+    align-self: end;
+    height: 35%;
+    border: 0px;
+    border-radius: 5px;
+  }
+  .ticket_list_button_right {
+    grid-row: 5 / span 2;
+    grid-column: 5 / span 2;
+    justify-self: stretch;
+  }
 
   .ticket_list_info_space {
     grid-row: 2 / span 2;
@@ -619,50 +627,54 @@ adaptive parts
     padding: 4.2vw 8.4vw;
   }
 
-  .expertpage_layout h3{
+  .expertpage_layout h3 {
     font-size: 4vw;
   }
 
-  .expertpage_layout h4{
+  .expertpage_layout h4 {
     font-size: 3vw;
   }
 
-  .expertpage_layout p{
+  .expertpage_layout p {
     font-size: 3vw;
   }
 }
 
 /*colortesting*/
 
-.expertpage_layout{
+.expertpage_layout {
   background-color: #1e1e1e;
   color: #f1f1f1;
 }
 
-.ticket_list, .ticket_info, .ticket_send_options{
-  background-color: rgba(255,255,255,0.05) ;
+.ticket_list,
+.ticket_info,
+.ticket_send_options {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.ticket_list_info_space, .ticket_info_info_space , .ticket_send_info_space{
-  background-color: rgba(255,255,255,0.1);
+.ticket_list_info_space,
+.ticket_info_info_space,
+.ticket_send_info_space {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.ticket_list_info_list_container{
-  background-color: rgba(255,255,255,0);
+.ticket_list_info_list_container {
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.ticket_list_info_list_item{
-  background-color: rgba(255,255,255,0.15);
+.ticket_list_info_list_item {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
-.scrollspace button{
+.scrollspace button {
   background-color: rgb(110, 224, 213);
-  background-color: rgb(255,255,255, 0.1);
+  background-color: rgb(255, 255, 255, 0.1);
   color: rgb(110, 224, 213);
   font-weight: bold;
 }
 
-.scrollspace button:hover{
+.scrollspace button:hover {
   background-color: rgb(110, 224, 213);
-  color: rgb(20,20,20);
+  color: rgb(20, 20, 20);
 }
