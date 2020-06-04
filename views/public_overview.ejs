@@ -10,16 +10,16 @@ var myList = {
 <div class="tri_panel">
     <div class="left_panel">
         <div class="good_list">
-            <!-- <%#- include("partials/ticket-list", {listItems: myList.good})%> -->
+            <!-- <%#- include("partials/ticket-list", {listItems: channels.good})%> -->
             <div class="ticket_list">
                 <h5 class="info_title">Trusted Sources</h5>
                 <div class= "ticket_list_info_space">
                     <!-- Hier komt een lijst met de tickets -->
                     <div class="ticket_list_info_list_container">
-                        <% for(var i=0; i<myList.length; i++) {%>
-                        <div class="ticket_list_info_list_item" id="<%= myList.good[i] %>">
-                            <h4 class="ticket_list_item_channel"><%= myList.good[i]%></h4>
-                            <h4 class="ticket_list_item_video"><%= myList.good[i]%></h4>
+                        <% for(var i=0; i<channels.length; i++) { %>
+                        <div class="ticket_list_info_list_item" id="<%= channels[i]._id %>">
+                            <h4 class="ticket_list_item_channel"><%= channels[i].channelTitle %></h4>
+                            <h4 class="ticket_list_item_video"><%= channels[i].videoTitle %></h4>
                         </div>
                         <% } %>
                     </div>
@@ -35,17 +35,17 @@ var myList = {
                         <div class="ticket_info_info_space">
                             <div class="ticket_info_video_details" >
                                 <!-- Hier komt een frame met de info over de geselecteerde ticket -->
-                                <h3 class="ticket_info_channel_title">Channel: <span><%= myList.good[0]%></span></h3>
-                                <h3 class="ticket_info_video_title">Video: <span><%= myList.good[0]%></span></h3>
-                                <p class="ticket_info_views">Views: <span><%= myList.good[0]%></span></p>
+                                <h3 class="ticket_info_channel_title">Channel: <span></span></h3>
+                                <h3 class="ticket_info_video_title">Video: <span></span></h3>
+                                <p class="ticket_info_views">Views: <span></span></p>
                                 <p class="ticket_info_description">Video Description: <span>
-                                        <%= myList.good[0]%> </span>
+                                         </span>
                                 </p>
                             </div>
                         </div>
                         <div class="ticket_info_button_space">
                             <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
-                            <a href="https://www.youtube.com/watch?v=<%#= myList[0].videoId%>"><button>Go to video</button></a>
+                            <a href="https://www.youtube.com/watch?v=<%#= channels[0].videoId%>"><button>Go to video</button></a>
                             <button onclick="infoSpaceContent.videoDetails()">Show more info</button>
                         </div>
                     </div>
@@ -65,11 +65,11 @@ var myList = {
                 <div class="ticket_list_info_space">
                     <!-- Hier komt een lijst met de tickets -->
                     <div class="ticket_list_info_list_container">
-                        <% for(var i=0; i<myList.length; i++) {%>
-                        <div class="ticket_list_info_list_item" id="<%= myList.bad[i] %>">
-                            <h4 class="ticket_list_item_channel"><%= myList.bad[i]%></h4>
-                            <h4 class="ticket_list_item_video"><%= myList.bad[i]%></h4>
-                        </div>
+                        <% for(var i=0; i<channels.length; i++) {%>
+                            <div class="ticket_list_info_list_item" id="<%= channels[i]._id %>">
+                                <h4 class="ticket_list_item_channel"><%= channels[i].channelTitle %></h4>
+                                <h4 class="ticket_list_item_video"><%= channels[i].videoTitle %></h4>
+                            </div>
                         <% } %>
                     </div>
                 </div>
@@ -84,17 +84,16 @@ var myList = {
                         <div class="ticket_info_info_space">
                             <div class="ticket_info_video_details" >
                                 <!-- Hier komt een frame met de info over de geselecteerde ticket -->
-                                <h3 class="ticket_info_channel_title">Channel: <span><%= myList.bad[0]%></span></h3>
-                                <h3 class="ticket_info_video_title">Video: <span><%= myList.bad[0]%></span></h3>
-                                <p class="ticket_info_views">Views: <span><%= myList.bad[0]%></span></p>
-                                <p class="ticket_info_description">Video Description: <span>
-                                        <%= myList.bad[0]%> </span>
+                                <h3 class="ticket_info_channel_title">Channel: <span></span></h3>
+                                <h3 class="ticket_info_video_title">Video: <span></span></h3>
+                                <p class="ticket_info_views">Views: <span></span></p>
+                                <p class="ticket_info_description">Video Description: <span></span>
                                 </p>
                             </div>
                         </div>
                         <div class="ticket_info_button_space">
                             <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
-                            <a href="https://www.youtube.com/watch?v=<%#= myList[0].videoId%>"><button>Go to video</button></a>
+                            <a href="https://www.youtube.com/watch?v=<%#= channels[0].videoId%>"><button>Go to video</button></a>
                             <button onclick="infoSpaceContent.videoDetails()">Show more info</button>
                         </div>
                     </div>
@@ -105,6 +104,10 @@ var myList = {
 </div>
 
 
+<script type="text/javascript">
+    const passData = <%- JSON.stringify(channels)%>;
+</script>
+<script type="text/javascript" src="/js/ticket-info.js"></script>
 
 
 <script>

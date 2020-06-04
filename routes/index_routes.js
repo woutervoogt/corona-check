@@ -37,6 +37,22 @@ router.get("/under_construction", function (req, res) {
 // Expert User Routes
 //================================================================================
 
+router.get("/overview", function (req, res) {
+  ReviewedChannel.find({ publish: "true" }, function (err, reviewedChannels) {
+    console.log(reviewedChannels);
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("public_overview.ejs", { channels: reviewedChannels });
+      console.log("rendered");
+    }
+  });
+});
+
+//================================================================================
+// Expert User Routes
+//================================================================================
+
 router.get("/dashboard", async function (req, res) {
   if (timer === true) {
     timer = false;
