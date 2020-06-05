@@ -263,7 +263,7 @@ expertpage
   grid-column: 5 / span 2;
   display: grid;
   grid-template-columns: 0px 22% 1fr 20px 44% 2fr 0px;
-  grid-template-rows: 0px 7fr 70% 20px 20% 2fr 0px;
+  grid-template-rows: 0px 7fr 70% 0px 20% 2fr 0px;
   align-items: stretch;
   justify-content: stretch;
 }
@@ -290,6 +290,8 @@ expertpage
   align-items: stretch;
   justify-content: stretch;
   border-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .ticket_send_options {
@@ -302,6 +304,8 @@ expertpage
   align-items: stretch;
   justify-content: stretch;
   border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 /*----sub groups: ticket list----*/
