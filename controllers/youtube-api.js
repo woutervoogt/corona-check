@@ -12,6 +12,7 @@ const youtube = google.youtube({
 let youtubeAPI = {};
 
 // Get search list from youtube
+
 youtubeAPI.searchList = async function () {
   const yTRes = await youtube.search.list({
     part: "id,snippet",
@@ -23,39 +24,54 @@ youtubeAPI.searchList = async function () {
   });
 
   const apiData = yTRes.data;
-  await refreshData(apiData);
+  const dataRefreshed = await refreshData(apiData);
+  return dataRefreshed;
 };
 
 async function refreshData(apiData) {
-  await YTData.deleteMany({}, async function (err) {
-    if (err) {
+  const dataDeleted = await YTData.deleteMany({}, async function (err) {
+  if (err) {
       console.log(err);
-    } else {
-      await saveToDatabase(apiData);
-    }
-  });
-}
-
-async function saveToDatabase(data) {
-  for (let i = 0; i < data.items.length; i++) {
-    const videoData = data.items[i];
-
-    const newYTData = {
-      videoId: videoData.id.videoId,
-      videoTitle: videoData.snippet.title,
-      channelId: videoData.snippet.channelId,
-      channelTitle: videoData.snippet.channelTitle,
-    };
-
-    await YTData.create(newYTData, function (err, newlyCreated) {
-      if (err) {
-        console.log(err);
-      } else {
-        return console.log(i);
-      }
-    });
+  } else {
+      const isUpdated = await saveToDatabase(apiData);
+      return isUpdated;
   }
+  });
+  return dataDeleted;
 }
+
+async function saveToDatabase(data){
+
+  var promiseArray = [];
+
+  for (i=0; i<data.items.length; i++){
+      
+      const videoData = data.items[i];
+
+      const newYTData = {
+        videoId: videoData.id.videoId,
+        videoTitle: videoData.snippet.title,
+        channelId: videoData.snippet.channelId,
+        channelTitle: videoData.snippet.channelTitle,
+      };
+
+      const myLoopPromise = await YTData.create(newYTData, function (err, newlyCreated) {
+          if (err) {
+              console.log(err);
+          } else {
+              return console.log(i);
+          }
+      });
+
+      promiseArray.push(myLoopPromise);
+  }
+
+  const functionDone = Promise.all([promiseArray]).then((values)=>{
+      console.log(values);
+  });
+  return functionDone;
+}
+
 
 youtubeAPI.videoInfo = async function () {
   var myPromise = new Promise((myresolutionfunction, myrejectionfunction) => {

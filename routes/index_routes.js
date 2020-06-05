@@ -15,7 +15,7 @@ const express = require("express"),
 //================================================================================
 
 const router = express.Router();
-let timer = false;
+let timer = true;
 
 //================================================================================
 // Index Routes
