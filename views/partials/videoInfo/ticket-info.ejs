@@ -1,0 +1,77 @@
+<div class="scrollspace">
+    <div class="ticket_info">
+        <h5 class="info_title"> <%= title %> </h5>
+        <% if (page === "expertpage") { %>
+        <form class="ticket_info_info_space" id="reviewForm" method="POST" action="/dashboard" target="_self">
+        <% } else { %>
+        <div class="ticket_info_info_space">
+        <% } %> 
+        <div class="ticket_info_video_details" >
+            <!-- Hier komt een frame met de info over de geselecteerde ticket -->
+            <h3 class="ticket_info_channel_title">Channel: <span></span></h3>
+            <h3 class="ticket_info_video_title">Video: <span></span></h3>
+            <p class="ticket_info_views">Views: <span></span></p>
+            <p class="ticket_info_description">Video Description: <span>
+                        </span>
+            </p>
+        </div>
+
+        <% if (page === "expertpage") { %>
+        <div class="ticket_info_score ticket_info_hidden">
+            <div class="input_box">
+                <input id="first_radio" type="radio" name="trustscore" value="trusted">
+                <label for="first_radio">Trusted source</label>
+            </div>
+            <div class="input_box">
+                <input id="second_radio" type="radio" name="trustscore" value="suspicious">
+                <label for="second_radio">Suspicious source</label>
+            </div>
+            <div class="input_box">
+                <input id="hidden_input" type="hidden" name="dbID" value="">
+            </div>
+        </div>
+
+        <div class="ticket_info_score_explanation ticket_info_hidden">
+            <div class="input_box">
+                <textarea id="first_textarea" name="score_explanation"></textarea>
+            </div>
+        </div>
+        <% } %>
+
+        <% if (page === "expertpage") { %>
+        </form>
+        <% } else { %>
+        </div>
+        <% } %> 
+
+        <div class="ticket_info_button_space">
+            <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
+            <a href="https://www.youtube.com/watch?v=<%#= channels[0].videoId%>"><button>Go to video</button></a>
+            <button onclick="infoSpaceContent.videoDetails()">Show more info</button>
+
+            <% if (page === "expertpage") { %>
+                <button onclick="infoSpaceContent.score()">Give score</button>
+                <button onclick="infoSpaceContent.explanation()">Explain score</button>
+            <% } %>
+
+        </div>
+    </div>
+
+    <% if (page === "expertpage") { %>
+        <div class="ticket_send_options">
+            <div class="ticket_send_info_space">
+                    <div class="input_box">
+                        <input id="first_checkbox" type="checkbox" name="publish" value="false" form="reviewForm">
+                        <label for="first_checkbox">Save as draft</label>
+                    </div>
+                    <div class="input_box">
+                        <input id="second_checkbox" type="checkbox" name="publish" value="true" form="reviewForm">
+                        <label for="second_checkbox">Publish review</label>
+                    </div>
+            </div>
+            <div class="ticket_send_button_space">
+                <button type="submit" form="reviewForm">Send</button>
+            </div>
+        </div>
+    <% } %>
+</div>

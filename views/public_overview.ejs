@@ -10,42 +10,49 @@ var myList = {
 <div class="tri_panel">
     <div class="left_panel">
         <div class="good_list">
-            <h1>betrouwbaar</h1>
-            <% for (i=0; i<myList.good.length; i++) {%>
-                <div>
-                    <h1>Dit is <%=myList.good[i]%></h1>
-                </div>
-            <%}%>
+
+            <%- include("partials/videoInfo/ticketlist", {listItems: channels, title: "Trusted Sources", page: "overview"}) %>
+
         </div>
+
         <div class="hidden_div_temp_container">
             <div class="hidden_div_temp">
-                <h1>Hallo dit is left</h1>
+
+                <%- include("partials/videoInfo/ticket-info", {listItems: channels, title: "Information", page: "overview"})  %>  
+
             </div>
-        </div>
+        </div>        
     </div>
+
     <div class="middle_panel">
         <canvas id="janus_canvas" width="400"></canvas>
     </div>
+
     <div class="right_panel">
-        
         <div class="bad_list">
-            <h1>onbetrouwbaar</h1>
-            <% for (i=0; i<myList.bad.length; i++) {%>
-                <div>
-                    <h1>Dit is <%=myList.bad[i]%></h1>
-                </div>
-            <%}%>
+            
+            <%- include("partials/videoInfo/ticketlist", {listItems: channels, title: "Suspicious Sources", page: "overview"}) %>
+            
         </div>
+
         <div class="hidden_div_temp_container">
             <div class="hidden_div_temp">
-                <h1>Hallo dit is right</h1>
-            </div>
+
+                <%- include("partials/videoInfo/ticket-info", {listItems: channels, title: "Information", page: "overview"})  %> 
+
+            </div>  
         </div>
     </div>
 </div>
 
-<script>
 
+<script type="text/javascript">
+    const passData = <%- JSON.stringify(channels)%>;
+</script>
+<script type="text/javascript" src="/js/ticket-info.js"></script>
+
+
+<script>
 
 var c = document.getElementById("janus_canvas");
 var ctx = c.getContext("2d");

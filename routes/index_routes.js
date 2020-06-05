@@ -35,10 +35,24 @@ router.get("/under_construction", function (req, res) {
 });
 
 //================================================================================
+// Overview Routes
+//================================================================================
+
+router.get("/overview", function (req, res) {
+  ReviewedChannel.find({ publish: "true" }, function (err, reviewedChannels) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("public_overview.ejs", { channels: reviewedChannels });
+    }
+  });
+});
+
+//================================================================================
 // Expert User Routes
 //================================================================================
 
-router.get("/dashboard", authentication.isExpert, async function (req, res) {
+router.get("/dashboard", /* authentication.isExpert */, async function (req, res) {
   if (timer === true) {
     timer = false;
     setTimeout(function () {
