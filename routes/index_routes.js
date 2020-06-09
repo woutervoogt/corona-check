@@ -8,7 +8,8 @@ const express = require("express"),
   User = require("../models/user.js"),
   YTSearchData = require("../models/yt-data"),
   ReviewedChannel = require("../models/reviewed-channel"),
-  youtubeAPI = require("../controllers/youtube-api.js");
+  youtubeAPI = require("../controllers/youtube-api.js"),
+  authentication = require("../controllers/authentication.js");
 
 //================================================================================
 // Setting up dependancies
@@ -34,7 +35,7 @@ router.get("/under_construction", function (req, res) {
 });
 
 //================================================================================
-// Expert User Routes
+// Overview Routes
 //================================================================================
 
 router.get("/overview", function (req, res) {
@@ -51,53 +52,56 @@ router.get("/overview", function (req, res) {
 // Expert User Routes
 //================================================================================
 
-router.get("/dashboard", async function (req, res) {
-  if (timer === true) {
-    timer = false;
-    setTimeout(function () {
-      timer = true;
-    }, 300000);
+router.get(
+  "/dashboard",
+  /* authentication.isExpert ,*/ async function (req, res) {
+    if (timer === true) {
+      timer = false;
+      setTimeout(function () {
+        timer = true;
+      }, 300000);
 
-    await updateRoute().then(async () => {
-      await youtubeAPI.videoInfo().then(async () => {
-        YTSearchData.find({}, async function (err, allVideos) {
-          // comment Alwin: Dit wacht nu niet op je update.
-          if (err) {
-            console.log(err);
-          } else {
-            console.log("hij gaat via de else");
-            res.render("expertpage.ejs", { data: allVideos });
-          }
+      await updateRoute().then(async () => {
+        await youtubeAPI.videoInfo().then(async () => {
+          YTSearchData.find({}, async function (err, allVideos) {
+            // comment Alwin: Dit wacht nu niet op je update.
+            if (err) {
+              console.log(err);
+            } else {
+              console.log("hij gaat via de else");
+              res.render("expertpage.ejs", { data: allVideos });
+            }
+          });
         });
       });
-    });
 
-    async function updateRoute() {
-      await youtubeAPI.searchList();
-    }
-  } else {
-    YTSearchData.find({}, function (err, allVideos) {
-      // comment Alwin: Dit wacht nu niet op je update.
-      if (err) {
-        console.log(err);
-      } else {
-        res.render("expertpage.ejs", { data: allVideos });
+      async function updateRoute() {
+        await youtubeAPI.searchList();
       }
-    });
+    } else {
+      YTSearchData.find({}, function (err, allVideos) {
+        // comment Alwin: Dit wacht nu niet op je update.
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("expertpage.ejs", { data: allVideos });
+        }
+      });
+    }
   }
-});
+);
 
-router.post("/dashboard", function (req, res) {
+router.post("/dashboard", authentication.isExpert, function (req, res) {
   //Als yt-data wordt ververst, kan de video info niet gevonden worden.
   //Mogelijke oplossing; database opruimen moet losgemaakt worden van nieuwe info opvragen
   YTSearchData.findById(req.body.dbID, function (err, foundVideo) {
     if (err) {
       console.log(err);
     } else {
-      // const author = {
-      //   id: req.user._id,
-      //   name: req.user.username,
-      // };
+      const author = {
+        id: req.user._id,
+        name: req.user.username,
+      };
       const newReview = {
         videoTitle: foundVideo.videoTitle,
         videoId: foundVideo.videoId,
@@ -108,7 +112,7 @@ router.post("/dashboard", function (req, res) {
         score: req.body.trustscore,
         explanation: req.body.score_explanation,
         publish: req.body.publish,
-        // author: author,
+        author: author,
       };
 
       ReviewedChannel.create(newReview, function (err, newlyCreated) {
