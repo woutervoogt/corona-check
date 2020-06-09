@@ -101,3 +101,65 @@ async function updateProef(){
     })
   
 }
+
+
+
+
+
+youtubeAPI.searchList = async function () {
+    const yTRes = await youtube.search.list({
+      part: "id,snippet",
+      maxResults: 50,
+      type: "video",
+      regionCode: "US",
+      order: "viewCount",
+      q: "Covid 19",
+    });
+  
+    const apiData = yTRes.data;
+    const dataRefreshed = await refreshData(apiData);
+    return dataRefreshed;
+};
+  
+async function refreshData(apiData) {
+    const dataDeleted = await YTData.deleteMany({}, async function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        const isUpdated = await saveToDatabase(apiData);
+        return isUpdated;
+    }
+    });
+    return dataDeleted;
+}
+  
+async function saveToDatabase(data){
+
+    var promiseArray = [];
+
+    for (i=0; i<data.items.length; i++){
+        
+        const videoData = data.items[i];
+  
+        const newYTData = {
+          videoId: videoData.id.videoId,
+          videoTitle: videoData.snippet.title,
+          channelId: videoData.snippet.channelId,
+          channelTitle: videoData.snippet.channelTitle,
+        };
+
+        const myLoopPromise = await YTData.create(newYTData, function (err, newlyCreated) {
+            if (err) {
+                console.log(err);
+            } else {
+                return console.log(i);
+            }
+        });
+
+        promiseArray.push(myLoopPromise);
+    }
+
+    Promise.all([promiseArray]).then((values)=>{
+        console.log(values);
+    });
+}
