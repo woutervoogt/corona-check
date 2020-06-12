@@ -259,7 +259,8 @@ margin-right: 10px;
   color: rgb(57, 36, 159);
   color: #5b41b8;
   color: rgb(74, 2, 126);
-  color: rgb(55, 73, 211);
+  color: rgb(126, 68, 206);
+  color: #0e0e0e;
 
   
 }
@@ -284,7 +285,8 @@ margin-right: 10px;
 .right_panel .not_so_hidden_div_temp .ticket_info h5 {
   color:rgb(8,13,73);
   color: #05386B;
-  color: rgb(57, 36, 159);
+  color: rgb(126, 68, 206);
+  color: #0e0e0e;
 }
 
 .right_panel .not_so_hidden_div_temp .ticket_info_info_space{
@@ -601,6 +603,67 @@ expertpage
   margin-left: 10px;
 }
 
+/*====================================================================================
+Landing
+=====================================================================================*/
+
+.landingtitle{
+  height: 300px;
+  background-color: blue;
+  padding: 1px;
+}
+
+.landingtitle h1{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.landingtitle h2{
+  text-align: center;
+}
+
+.landing_block{
+  height: 500px;
+  background-color: teal;
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr 200px 1fr 200px 1fr;
+  grid-template-rows: 150px 350px;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.landing_block h1{
+  grid-row: 1;
+  grid-column: 1/ span 7;
+  text-align: center;
+}
+
+.landing_block p{
+  font-size: 25px;
+  text-align: center;
+}
+
+.landing_block_first{
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.landing_block_second{
+  grid-row: 2;
+  grid-column: 4;
+}
+.landing_block_third{
+  grid-row: 2;
+  grid-column: 6;
+}
+
+.temp_afbeeldingplaceholder{
+  height: 100px;
+  width: 100px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  background-color: brown;
+}
 /*====================================================================================
 adaptive parts
 =====================================================================================*/
