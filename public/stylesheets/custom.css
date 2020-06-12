@@ -52,8 +52,8 @@ showpage
   left: calc((20vw - 400px) / 2);
   background-color: green;
   background-color: rgb(65, 184, 118);
-  background-color: rgb(35, 174, 98);
-  background-color: rgb(20, 128, 69);
+  /* background-color: rgb(35, 174, 98);
+  background-color: rgb(20, 128, 69); */
 }
 
 .tri_panel,
@@ -87,7 +87,7 @@ showpage
   align-items: stretch;
   overflow: hidden;
   background-color: black;
-  background-color: #0e0e0e;
+  background-color: #1e1e1e;
   width: 40%;
   transition: width 1s;
 }
@@ -101,8 +101,8 @@ showpage
   background-color: rgb(84, 202, 137);
   background-color: #d1d1d1;
   background-color: rgb(65, 184, 118);
-  background-color: rgb(35, 174, 98);
-  background-color: rgb(20, 128, 69);
+  /* background-color: rgb(35, 174, 98);
+  background-color: rgb(20, 128, 69); */
   width: 40%;
   transition: width 1s;
 }
@@ -258,7 +258,8 @@ margin-right: 10px;
   color: #090909;
   color: rgb(57, 36, 159);
   color: #5b41b8;
-  color: rgb(57, 36, 159);
+  color: rgb(74, 2, 126);
+  color: rgb(55, 73, 211);
 
   
 }
@@ -312,7 +313,7 @@ margin-right: 10px;
   background-color: rgb(122, 131, 255);
   background-color: rgb(85, 96, 252);
   background-color: #f44708;
-  background-color: #0e0e0e;
+  background-color: #1e1e1e;
   color:black;
   color: white;
 }
@@ -553,8 +554,9 @@ expertpage
   grid-column: 2 / span 2;
   /* background-color: rgba(255, 255, 255, 0.399); */
   overflow-y: scroll;
+  overflow-x: hidden;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
 }
 
 /*----sub groups: ticket list----*/
