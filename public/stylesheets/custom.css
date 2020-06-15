@@ -140,7 +140,9 @@ showpage
 }
 
 .not_so_hidden_div_temp {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row: 1fr;
 }
 .hidden_div_temp {
   display: none;

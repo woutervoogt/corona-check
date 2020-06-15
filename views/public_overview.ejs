@@ -86,36 +86,82 @@ resizeCanvas();
     var hiddenRightContainer = document.querySelector(".right_panel .hidden_div_temp_container");
     var hiddenLeft = document.querySelector(".left_panel .hidden_div_temp");
     var hiddenRight = document.querySelector(".right_panel .hidden_div_temp");
-    triPanel.addEventListener("click", changeSide, false);
+    const closeButton = document.querySelectorAll(".ticket_info_button_space > button");
+    const goodListItems = document.querySelectorAll(".good_list .ticket_list_info_list_item");
+    const badListItems = document.querySelectorAll(".bad_list .ticket_list_info_list_item");
+
+    goodListItems.forEach((e) => {
+        e.addEventListener("click", setStateTwo);
+    });
+    badListItems.forEach((e) => {
+        e.addEventListener("click", setStateZero);
+    });
+    closeButton.forEach((e) => {
+        e.addEventListener("click", setStateOne);
+    });
+    
+
     var stateCounter = 1;
     var stateCounterPlus = true;
 
-    function changeSide(){ 
-        if(stateCounter < 2 && stateCounterPlus === true){
-            stateCounter++;
-        }
-        else if (stateCounter > 0 && stateCounterPlus === false){
-            stateCounter--;
-        }
-
-        else if (stateCounter <= 0){
-            stateCounter = 0;
-            stateCounterPlus = true;
-            stateCounter++
-        }
-
-        else if (stateCounter => 2){
-            stateCounter = 2;
-            stateCounterPlus = false;
-            stateCounter --;
-        }
-
-        else{
-            return console.log("something went wrong");
-        }
-
+    function setStateZero(){
+        stateCounter = 0;
         setSliderClass();
     }
+
+    function setStateOne(){
+        stateCounter = 1;
+        setSliderClass();
+    }
+
+    function setStateTwo(){
+        stateCounter = 2;
+        setSliderClass();
+    }
+
+    // function changeSide(){ 
+
+        // else if (stateCounter > 0 && stateCounterPlus === false){
+        //     stateCounter--;
+        // }
+
+        // else if (stateCounter <= 0){
+        //     stateCounter = 0;
+        //     stateCounterPlus = true;
+        //     stateCounter++
+        // }
+
+        // else if (stateCounter => 2){
+        //     stateCounter = 2;
+        //     stateCounterPlus = false;
+        //     stateCounter --;
+        // }
+
+        // if(stateCounter < 2 && stateCounterPlus === true){
+        //     stateCounter++;
+        // }
+        // else if (stateCounter > 0 && stateCounterPlus === false){
+        //     stateCounter--;
+        // }
+
+        // else if (stateCounter <= 0){
+        //     stateCounter = 0;
+        //     stateCounterPlus = true;
+        //     stateCounter++
+        // }
+
+        // else if (stateCounter => 2){
+        //     stateCounter = 2;
+        //     stateCounterPlus = false;
+        //     stateCounter --;
+        // }
+
+    //     else{
+    //         return console.log("something went wrong");
+    //     }
+
+    //     setSliderClass();
+    // }
 
     function setSliderClass(){
         switch(stateCounter){

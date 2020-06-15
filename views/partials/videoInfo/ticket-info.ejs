@@ -19,11 +19,11 @@
         <% if (page === "expertpage") { %>
         <div class="ticket_info_score ticket_info_hidden">
             <div class="input_box">
-                <input id="first_radio" type="radio" name="trustscore" value="trusted">
+                <input id="first_radio" type="radio" name="trustscore" value="trusted" required>
                 <label for="first_radio">Trusted source</label>
             </div>
             <div class="input_box">
-                <input id="second_radio" type="radio" name="trustscore" value="suspicious">
+                <input id="second_radio" type="radio" name="trustscore" value="suspicious" required>
                 <label for="second_radio">Suspicious source</label>
             </div>
             <div class="input_box">
@@ -33,7 +33,7 @@
 
         <div class="ticket_info_score_explanation ticket_info_hidden">
             <div class="input_box">
-                <textarea id="first_textarea" name="score_explanation"></textarea>
+                <textarea id="first_textarea" name="score_explanation" required></textarea>
             </div>
         </div>
         <% } %>
@@ -61,11 +61,11 @@
         <div class="ticket_send_options">
             <div class="ticket_send_info_space">
                     <div class="input_box">
-                        <input id="first_checkbox" type="checkbox" name="publish" value="false" form="reviewForm">
+                        <input id="first_checkbox" type="checkbox" name="publish" value="false" form="reviewForm" required>
                         <label for="first_checkbox">Save as draft</label>
                     </div>
                     <div class="input_box">
-                        <input id="second_checkbox" type="checkbox" name="publish" value="true" form="reviewForm">
+                        <input id="second_checkbox" type="checkbox" name="publish" value="true" form="reviewForm" required>
                         <label for="second_checkbox">Publish review</label>
                     </div>
             </div>
