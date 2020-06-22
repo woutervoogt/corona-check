@@ -1,10 +1,9 @@
 <%- include("partials/header") %>
 <%- include("partials/nav-bar") %>
-<scroll-container>
+<div class="my_scroll-container">
     <div class="landingtitle" id="scroll_1">
         <h1>Corona Check</h1>
         <h2>Check je Corona nieuws</h2>
-        <button type="button" onclick="myScroll()"></button>
     </div>
     <div class="landing_block" id="scroll_2">
         <h1>Hoe werkt het?</h1>
@@ -60,7 +59,7 @@
             </div>
         </div>
     </div>
-</scroll-container>
+</div>
 <script>
 
 window.addEventListener("scroll", myScroll);
@@ -73,6 +72,7 @@ var scrollDirection = "down";
 var destinationID = "scroll_2";
 
 function getDestination(){
+    changeDestinations(destinationID);
     if (scrollDirection === "up"){
         destinationID = myUp;
     }
@@ -98,12 +98,16 @@ function changeDestinations(myDest){
 
 
 function SmoothVerticalScrolling(e, time, where) {
-    var eTop = e.getBoundingClientRect().top;
+    scrollingBool = true;
+    var topCorrectie = window.pageYOffset - window.scrollY + 56;
+    // var eTop = e.getBoundingClientRect().top + 56 + topCorrectie;
+    var eTop = e.offsetTop - window.pageYOffset + 56;
     var eAmt = eTop / 100;
     var curTime = 0;
     while (curTime <= time) {
         window.setTimeout(SVS_B, curTime, eAmt, where);
         curTime += time / 100;
+        console.log(eTop);
     }
 }
 
@@ -127,7 +131,6 @@ function myScroll(){
             scrollDirection = "down";
         }
         scrollPosition = window.pageYOffset;
-        console.log(scrollPosition);
         window.setTimeout(function(){
             scrollPositionBool = false;
 
@@ -137,12 +140,11 @@ function myScroll(){
         scrollingBool=true;
         getDestination();
         var destination = document.getElementById(destinationID);
-        changeDestinations(destination.id);
         console.log(destination);
         window.setTimeout(function(){
             scrollingBool = false;
         }, 500);
-        SmoothVerticalScrolling(destination, 375, "top");
+        SmoothVerticalScrolling(destination, 400, "top");
     }
 }
 </script>

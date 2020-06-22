@@ -606,16 +606,21 @@ expertpage
 /*====================================================================================
 Landing
 =====================================================================================*/
-scroll-container{ /*temporary*/
+.my_scroll-container{ /*temporary*/
   scroll-snap-type: y mandatory;
+  display: block;
+  overflow-y: scroll;
+  height: calc(100vh - 56px);
+
 }
+
 
 .landingtitle{
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 56px);
+  height: calc(100vh);
   background-color: teal;
-  padding: 1px;
+  /* padding: 1px; */
   align-items: center;
   justify-content: center;
   scroll-snap-align: start;
@@ -639,7 +644,7 @@ scroll-container{ /*temporary*/
   justify-content: stretch;
   align-items: stretch;
   scroll-snap-align: start;
-  padding: 1px;
+  /* padding: 1px; */
 }
 
 
@@ -695,6 +700,18 @@ scroll-container{ /*temporary*/
 .temp_afbeeldingplaceholder img{
   height: 100%;
   width: 100%;
+}
+
+#scroll_1{
+  background-color: tomato;
+}
+
+#scroll_2{
+  background-color: burlywood;
+}
+
+#scroll_3{
+  background-color: gray;
 }
 
 /*====================================================================================
