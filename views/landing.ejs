@@ -1,39 +1,149 @@
 <%- include("partials/header") %>
 <%- include("partials/nav-bar") %>
+<scroll-container>
+    <div class="landingtitle" id="scroll_1">
+        <h1>Corona Check</h1>
+        <h2>Check je Corona nieuws</h2>
+        <button type="button" onclick="myScroll()"></button>
+    </div>
+    <div class="landing_block" id="scroll_2">
+        <h1>Hoe werkt het?</h1>
+        <div class="landing_block_first">
+            <div class="temp_afbeeldingplaceholder">
+                <img src="monitor.svg"></img>
+            </div>
+            <div class="center_container">
+                <p>Bekijk onze lijst met goede en slechte channels</p>
+            </div>
+        </div>
+        <div class="landing_block_second">
+            <div class="temp_afbeeldingplaceholder">
+                <img src="monitor.svg"></img>
+            </div>
+            <div class="center_container">
+                <p>Zoek naar Channels</p>
+            </div>
+        </div>
+        <div class="landing_block_third">
+            <div class="temp_afbeeldingplaceholder">
+                <img src="monitor.svg"></img>
+            </div>
+            <div class="center_container">
+                <p>Vraag een channel review aan</p>
+            </div>
+        </div>
+    </div>
+    <div class="landing_block" id="scroll_3">
+        <h1>Wat maakt deze site betrouwbaar</h1>
+        <div class="landing_block_first">
+            <div class="temp_afbeeldingplaceholder">
+                <img src="monitor.svg"></img>
+            </div>
+            <div class="center_container">
+                <p>Actie 1</p>
+            </div>
+        </div>
+        <div class="landing_block_second">
+            <div class="temp_afbeeldingplaceholder">
+                <img src="monitor.svg"></img>
+            </div>
+            <div class="center_container">
+                <p>Actie 2</p>
+            </div>
+        </div>
+        <div class="landing_block_third">
+            <div class="temp_afbeeldingplaceholder">
+                <img src="monitor.svg"></img>
+            </div>
+            <div class="center_container">
+                <p>Actie 3</p>
+            </div>
+        </div>
+    </div>
+</scroll-container>
+<script>
 
-<div class="landingtitle">
-    <h1>Corona Check</h1>
-    <h2>Check je Corona nieuws</h2>
-</div>
-<div class="landing_block">
-    <h1>Hoe werkt het?</h1>
-    <div class="landing_block_first">
-        <div class="temp_afbeeldingplaceholder"></div>
-        <p>Bekijk onze lijst met goede en slechte channels</p>
-    </div>
-    <div class="landing_block_second">
-        <div class="temp_afbeeldingplaceholder"></div>
-        <p>Zoek naar Channels</p>
-    </div>
-    <div class="landing_block_third">
-        <div class="temp_afbeeldingplaceholder"></div>
-        <p>Vraag een channel review aan</p>
-    </div>
-</div>
-<div class="landing_block">
-    <h1>Wat maakt deze site betrouwbaar</h1>
-    <div class="landing_block_first">
-        <div class="temp_afbeeldingplaceholder"></div>
-        <p>Actie 1</p>
-    </div>
-    <div class="landing_block_second">
-        <div class="temp_afbeeldingplaceholder"></div>
-        <p>Actie 2</p>
-    </div>
-    <div class="landing_block_third">
-        <div class="temp_afbeeldingplaceholder"></div>
-        <p>Actie 3</p>
-    </div>
-</div>
+window.addEventListener("scroll", myScroll);
+var scrollingBool = false;
+var myDown = "scroll_2";
+var myUp = "scroll_1";
+var scrollPosition = 0;
+var scrollPositionBool = false;
+var scrollDirection = "down";
+var destinationID = "scroll_2";
 
+function getDestination(){
+    if (scrollDirection === "up"){
+        destinationID = myUp;
+    }
+    else{
+        destinationID = myDown;
+    }
+}
+
+function changeDestinations(myDest){
+    if (myDest === "scroll_1"){
+        myUp = "scroll_1";
+        myDown = "scroll_2";
+    }
+    if (myDest === "scroll_2"){
+        myUp = "scroll_1";
+        myDown = "scroll_3";  
+    }
+    if (myDest === "scroll_3"){
+        myUp = "scroll_2";
+        myDown = "scroll_3";
+    }
+}
+
+
+function SmoothVerticalScrolling(e, time, where) {
+    var eTop = e.getBoundingClientRect().top;
+    var eAmt = eTop / 100;
+    var curTime = 0;
+    while (curTime <= time) {
+        window.setTimeout(SVS_B, curTime, eAmt, where);
+        curTime += time / 100;
+    }
+}
+
+
+
+function SVS_B(eAmt, where) {
+    if(where === "center" || where === "")
+        window.scrollBy(0, eAmt / 2);
+    if (where === "top")
+        window.scrollBy(0, eAmt);
+}
+
+function myScroll(){
+    if (scrollPositionBool === false ){
+        scrollPositionBool = true;
+        if (scrollPosition>window.pageYOffset){
+            scrollDirection = "up";
+        }
+        else if (scrollPosition===window.pageYOffset){}
+        else{
+            scrollDirection = "down";
+        }
+        scrollPosition = window.pageYOffset;
+        console.log(scrollPosition);
+        window.setTimeout(function(){
+            scrollPositionBool = false;
+
+        }, 50);
+    }
+    if (scrollingBool === false){
+        scrollingBool=true;
+        getDestination();
+        var destination = document.getElementById(destinationID);
+        changeDestinations(destination.id);
+        console.log(destination);
+        window.setTimeout(function(){
+            scrollingBool = false;
+        }, 500);
+        SmoothVerticalScrolling(destination, 375, "top");
+    }
+}
+</script>
 <%- include("partials/footer") %>
