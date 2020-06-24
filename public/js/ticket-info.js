@@ -40,6 +40,8 @@ function showInfo() {
   // ticketListItems is een Nodelist. IndexOf werkt alleen op een Array.
   // Nodelist is static, dus mogelijk dat een veranderende lijst problemen oplevert.
   // Mogelijke oplossing/verbetering: let passDataIndex = Array.prototype.indexOf.call(this.parentNode.children,this);
+  formReset();
+
   let listItemArray = Array.from(this.parentNode.children);
   let passDataIndex = listItemArray.indexOf(this);
 
@@ -61,4 +63,15 @@ function showInfo() {
     "https://www.youtube.com/watch?v=" + passData[passDataIndex].videoId;
 
   element.querySelector("#hidden_input").value = passData[passDataIndex]._id;
+}
+
+function formReset() {
+  const reviewForm = document.getElementById("reviewForm");
+  [...reviewForm.elements].forEach((e) => {
+    if (e.checkValidity()) {
+      return console.log(e);
+    } else {
+      reviewForm.reset();
+    }
+  });
 }
