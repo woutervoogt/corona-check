@@ -41,6 +41,7 @@ function showInfo() {
   // Nodelist is static, dus mogelijk dat een veranderende lijst problemen oplevert.
   // Mogelijke oplossing/verbetering: let passDataIndex = Array.prototype.indexOf.call(this.parentNode.children,this);
   formReset();
+  infoSpaceContent.videoDetails();
 
   let listItemArray = Array.from(this.parentNode.children);
   let passDataIndex = listItemArray.indexOf(this);
@@ -67,11 +68,25 @@ function showInfo() {
 
 function formReset() {
   const reviewForm = document.getElementById("reviewForm");
-  [...reviewForm.elements].forEach((e) => {
-    if (e.checkValidity()) {
-      return console.log(e);
-    } else {
+  const trustedRadio = document.getElementById("first_radio");
+  const suspiciousRadio = document.getElementById("second_radio");
+  const scoreExplanation = document.getElementById("first_textarea");
+
+  console.log(trustedRadio.checked);
+  console.log(suspiciousRadio.checked);
+  console.log(scoreExplanation.value);
+
+  if (
+    trustedRadio.checked ||
+    suspiciousRadio.checked ||
+    scoreExplanation.value
+  ) {
+    if (
+      window.confirm(
+        "Are you sure you want to coninue? Tip: Click 'Save as draft' to keep your work"
+      )
+    ) {
       reviewForm.reset();
     }
-  });
+  }
 }
