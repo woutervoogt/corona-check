@@ -266,14 +266,22 @@ margin-right: 10px;
 }
 
 .bad_list .ticket_list_info_space{
-  background-color: rgb(157, 219, 185);
+  /* background-color: rgb(157, 219, 185);
   background-color: rgba(255, 255, 255, 0.399);
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1); */
 }
 
 .bad_list .ticket_list_info_list_item{
-  background-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.2); */
+}
+
+.bad_list .ticket_list_info_list_item:hover{
+  background-color: rgba(0, 0, 0, 0.2); 
+}
+
+.bad_list .ticket_list_info_list_item h4{
+  border-color: black;
 }
 
 .right_panel .not_so_hidden_div_temp .ticket_info {
@@ -496,8 +504,8 @@ expertpage
   grid-row: 2 / span 2;
   grid-column: 2;
   /* background-color: rgba(255, 255, 255, 0.399); */
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 10px;
 }
 
@@ -511,14 +519,32 @@ expertpage
 .ticket_list_info_list_item {
   /* background-color: rgb(207, 208, 207); */
   margin-right: 12px;
-  margin-left: 12px;
-  border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-left: 0px;
+  /* border-radius: 5px; */
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  border-radius: 6px;
+  
 }
+
 
 .ticket_list_info_list_item h4 {
   margin: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid gray;
+  /* border-bottom: 2px solid black;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px; */
+}
+
+.ticket_list_info_list_item:hover{
+  background-color: #ffffff20;
 }
 
 /*----sub groups: ticket list----*/
@@ -964,7 +990,7 @@ adaptive parts
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.ticket_list_info_space,
+/* .ticket_list_info_space, */
 .ticket_info_info_space,
 .ticket_send_info_space {
   background-color: rgba(255, 255, 255, 0.1);
@@ -975,7 +1001,7 @@ adaptive parts
 }
 
 .ticket_list_info_list_item {
-  background-color: rgba(255, 255, 255, 0.15);
+  /* background-color: rgba(255, 255, 255, 0.15); */
 }
 
 .scrollspace button {
