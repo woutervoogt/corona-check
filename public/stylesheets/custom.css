@@ -298,10 +298,10 @@ margin-right: 10px;
 }
 
 .right_panel .not_so_hidden_div_temp .ticket_info_info_space{
-  background-color:rgb(157, 219, 185);
+  /* background-color:rgb(157, 219, 185);
   background-color: rgba(0,0,0,0.1);
   color: rgb(40, 71, 60);
-  color: #303030;
+  color: #303030; */
   color: black;
 }
 
@@ -328,6 +328,16 @@ margin-right: 10px;
   color: white;
 }
 
+.right_panel .ticket_info_channel_title,
+.right_panel .ticket_info_video_title,
+.right_panel .ticket_info_views,
+.right_panel .ticket_info_description{
+  background-color: rgba(0,0,0,0.05);
+}
+
+.right_panel .ticket_info_channel_title{
+  color: rgb(165, 25, 0);
+}
 
 
 /*====================================================================================
