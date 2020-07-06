@@ -51,6 +51,10 @@ showpage
   align-self: center;
   left: calc((20vw - 400px) / 2);
   background-color: green;
+  background-color: rgb(65, 184, 118);
+  background-color: rgb(107, 207, 152);
+  /* background-color: rgb(35, 174, 98);
+  background-color: rgb(20, 128, 69); */
 }
 
 .tri_panel,
@@ -84,6 +88,7 @@ showpage
   align-items: stretch;
   overflow: hidden;
   background-color: black;
+  background-color: #1e1e1e;
   width: 40%;
   transition: width 1s;
 }
@@ -94,7 +99,12 @@ showpage
   display: flex;
   align-items: stretch;
   overflow: hidden;
-  background-color: green;
+  background-color: rgb(84, 202, 137);
+  background-color: #d1d1d1;
+  background-color: rgb(65, 184, 118);
+  background-color: rgb(107, 207, 152);
+  /* background-color: rgb(35, 174, 98);
+  background-color: rgb(20, 128, 69); */
   width: 40%;
   transition: width 1s;
 }
@@ -151,8 +161,8 @@ showpage
 }
 
 .not_so_hidden_div_temp .ticket_info {
-  grid-template-columns: 10px 20% 2fr 10px 20% 2fr 10px;
-  grid-template-rows: 10px 50px 0px 5px 5fr 50% 10px;
+  grid-template-columns: 20px 20% 2fr 10px 20% 2fr 20px;
+  grid-template-rows: 10px 50px 0px 5px 5fr 50% 20px;
   justify-content: stretch;
   width: 40vw;
 }
@@ -221,11 +231,115 @@ showpage
 .bad_list .ticket_list {
   grid-row: 2 / span 2;
   grid-column: 2;
+  grid-template-rows: 8.4vh 60% 4fr 0px 0px 0px 20px;
   width: 30vw;
   height: 100%;
   color: white;
   justify-self: stretch;
 }
+
+.bad_list .ticket_list{
+
+  background-color: rgb(255, 255, 255); 
+  background-color:rgba(165, 84, 202,0.1);
+  background-color: rgb(119, 211, 160);
+  background-color: rgba(191, 196, 196, 1);
+  background-color: rgba(230,230,230,0.75);
+  color: rgb(84, 202, 137);
+  color: rgb(0, 0, 0);
+  color: rgb(40, 71, 60);
+  color: #303030;
+  color: black;
+}
+
+.bad_list .ticket_list h5{
+  color: rgb(211, 130, 120);
+  color: rgb(8, 13, 73);
+  color: #05386B;
+  color: #090909;
+  color: rgb(57, 36, 159);
+  color: #5b41b8;
+  color: rgb(74, 2, 126);
+  color: rgb(126, 68, 206);
+  color: #0e0e0e;
+
+  
+}
+
+.bad_list .ticket_list_info_space{
+  /* background-color: rgb(157, 219, 185);
+  background-color: rgba(255, 255, 255, 0.399);
+  background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.bad_list .ticket_list_info_list_item{
+  /* background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.2); */
+}
+
+.bad_list .ticket_list_info_list_item:hover{
+  background-color: rgba(0, 0, 0, 0.2); 
+}
+
+.bad_list .ticket_list_info_list_item h4{
+  border-color: black;
+}
+
+.right_panel .not_so_hidden_div_temp .ticket_info {
+  background-color:rgb(119, 211, 160);
+  background-color: rgb(191, 196, 196);
+  background-color: rgba(230,230,230,0.75);
+}
+
+.right_panel .not_so_hidden_div_temp .ticket_info h5 {
+  color:rgb(8,13,73);
+  color: #05386B;
+  color: rgb(126, 68, 206);
+  color: #0e0e0e;
+}
+
+.right_panel .not_so_hidden_div_temp .ticket_info_info_space{
+  /* background-color:rgb(157, 219, 185);
+  background-color: rgba(0,0,0,0.1);
+  color: rgb(40, 71, 60);
+  color: #303030; */
+  color: black;
+}
+
+.right_panel .not_so_hidden_div_temp button,
+.right_panel .not_so_hidden_div_temp a{
+  /* background-color:rgb(157, 219, 185);
+  background-color: #0e0e0e10; */
+  color: rgb(85, 96, 252);
+  color: #f44708;
+  color: #0e0e0e;
+}
+
+.right_panel .not_so_hidden_div_temp button{
+  background-color: #0e0e0e20;
+}
+
+.right_panel .not_so_hidden_div_temp button:hover,
+.right_panel .not_so_hidden_div_temp a:hover{
+  background-color: rgb(122, 131, 255);
+  background-color: rgb(85, 96, 252);
+  background-color: #f44708;
+  background-color: #1e1e1e;
+  color:black;
+  color: white;
+}
+
+.right_panel .ticket_info_channel_title,
+.right_panel .ticket_info_video_title,
+.right_panel .ticket_info_views,
+.right_panel .ticket_info_description{
+  background-color: rgba(0,0,0,0.05);
+}
+
+.right_panel .ticket_info_channel_title{
+  color: rgb(165, 25, 0);
+}
+
 
 /*====================================================================================
 searchfield
@@ -302,7 +416,7 @@ expertpage
   grid-column: 2 / span 2;
   display: grid;
   grid-template-columns: 20px 1fr 20px;
-  grid-template-rows: 8.4vh 60% 4fr 20px 60px 0px 2.4vh;
+  grid-template-rows: 10.4vh 60% 4fr 0px 70px 0px 2.4vh;
   align-items: stretch;
   justify-content: stretch;
   border-radius: 10px;
@@ -314,7 +428,7 @@ expertpage
   grid-column: 5 / span 2;
   display: grid;
   grid-template-columns: 0px 22% 1fr 20px 44% 2fr 0px;
-  grid-template-rows: 0px 7fr 70% 0px 20% 2fr 0px;
+  grid-template-rows: 0px 7fr 70% 20px 20% 2fr 0px;
   align-items: stretch;
   justify-content: stretch;
 }
@@ -329,6 +443,7 @@ expertpage
   font-size: 4vh;
   font-weight: bolder;
   color: rgb(84, 202, 137);
+  color: rgb(107, 207, 152);
 }
 
 .ticket_info {
@@ -337,12 +452,21 @@ expertpage
   grid-column: 2 / span 5;
   display: grid;
   grid-template-columns: 20px 40% 4fr 20px 10% 1fr 20px;
-  grid-template-rows: 8.4vh 1fr 2.1vh;
+  grid-template-rows: 10.4vh 1fr 2.1vh;
   align-items: stretch;
   justify-content: stretch;
   border-radius: 10px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  /* border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px; */
+}
+
+.ticket_info p{
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.ticket_info h3{
+  margin-bottom:0px;
 }
 
 .ticket_send_options {
@@ -355,8 +479,8 @@ expertpage
   align-items: stretch;
   justify-content: stretch;
   border-radius: 10px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  /* border-top-left-radius: 0px;
+  border-top-right-radius: 0px; */
 }
 
 /*----sub groups: ticket list----*/
@@ -373,6 +497,8 @@ expertpage
   justify-items: stretch;
   margin-left: 20px;
   margin-right: 20px;
+  padding-top: 10px;
+  border-top: 1px dashed gray;
 }
 
 .ticket_list_button_left {
@@ -381,27 +507,48 @@ expertpage
   background-position: center;
   background-color: transparent;
   border: 0px;
+  background-size: 60%;
 }
 .ticket_list_button_mid {
   margin-left: 5px;
   margin-right: 5px;
   border: none;
   border-radius: 5px;
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 20px;
 }
+
+.ticket_list_button_mid:hover{
+  color: white;
+  background-color: rgba(255,255,255,0.3);
+}
+
 .ticket_list_button_right {
   background-image: url("/download_right.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
+  background-size: 60%;
   border: 0px;
 }
+
+.ticket_list_button_right:hover {
+background-size: 70%;
+}
+
+.ticket_list_button_left:hover {
+  background-size: 70%;
+  }
 
 .ticket_list_info_space {
   grid-row: 2 / span 2;
   grid-column: 2;
   /* background-color: rgba(255, 255, 255, 0.399); */
-  padding-top: 25px;
-  padding-bottom: 25px;
+  /* padding-top: 5px; */
+  padding-bottom: 15px;
   border-radius: 10px;
 }
 
@@ -415,14 +562,32 @@ expertpage
 .ticket_list_info_list_item {
   /* background-color: rgb(207, 208, 207); */
   margin-right: 12px;
-  margin-left: 12px;
-  border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-left: 0px;
+  /* border-radius: 5px; */
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  border-radius: 6px;
+  
 }
+
 
 .ticket_list_info_list_item h4 {
   margin: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid gray;
+  /* border-bottom: 2px solid black;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px; */
+}
+
+.ticket_list_info_list_item:hover{
+  background-color: #ffffff20;
 }
 
 /*----sub groups: ticket list----*/
@@ -460,10 +625,22 @@ expertpage
   grid-column: 2 / span 2;
   /* background-color: rgba(255, 255, 255, 0.399); */
   overflow-y: scroll;
+  overflow-x: hidden;
   border-radius: 10px;
-  padding: 10px;
+  /* padding: 20px; */
 }
 
+#hidden_input{
+  width: 80%;
+  height: 80%;
+}
+
+
+#first_textarea{
+  height: 200px;
+  width: 100%;
+  border-radius: 10px;
+}
 /*----sub groups: ticket list----*/
 
 .ticket_send_button_space {
@@ -505,6 +682,220 @@ expertpage
   margin-bottom: 0px;
   margin-left: 10px;
 }
+
+.ticket_info_channel_title,
+.ticket_info_video_title,
+.ticket_info_views,
+.ticket_info_description{
+  background-color: rgba(255,255,255,0.05);
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+.ticket_info_channel_title{
+  padding-top: 5px;
+  font-size: 1vw;
+  font-weight: normal;
+  color: rgb(0, 255, 187);
+}
+
+.ticket_info_video_title{
+  padding-bottom: 5px;
+}
+
+.ticket_info_views img{
+  margin-right: 20px;
+}
+
+/*====================================================================================
+Landing
+=====================================================================================*/
+.my_scroll-container{ /*temporary*/
+  scroll-snap-type: y mandatory;
+  display: block;
+  overflow-y: scroll;
+  height: calc(100vh - 56px);
+
+}
+
+
+.landingtitle{
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh);
+  background-color: teal;
+  color: #e0e0e0;
+  /* padding: 1px; */
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.landingtitle h1{
+  text-align: center;
+  font-size: 100px;
+  margin-bottom: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.landingtitle h2{
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 200px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: normal;
+}
+
+.landing_block{
+  height: calc(100vh - 56px);
+  /* background-color: teal; */
+  color: #e0e0e0;
+  display: grid;
+  grid-template-columns: 2fr 325px 1fr 325px 1fr 325px 2fr;
+  grid-template-rows: 1fr 175px 400px 1fr;
+  justify-content: stretch;
+  align-items: stretch;
+  scroll-snap-align: start;
+  /* padding: 1px; */
+}
+
+.landing_block a{
+  display: flex;
+  width: 150px;
+  height: 50px;
+  border-style: none;
+  border: 0px;
+  font-size: 25px;
+  font-weight: 500;
+  background-color: rgba(0,0,0,0.2);
+  color: black;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+}
+
+.landing_block a:hover{
+  background-color: black;
+  color: white;
+}
+
+.landing_buttons{
+  display:flex;
+  justify-content: center;
+  padding-top: 30px;
+  border-top: 1px dashed black;
+}
+
+.landing_block h1{
+  grid-row: 2;
+  grid-column: 1/ span 7;
+  text-align: center;
+  font-size: 90px;
+
+}
+
+.center_container{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px dashed black;
+  
+}
+
+.landing_block p{
+  height: fit-content;
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+}
+
+.landing_block_first{
+  grid-row: 3;
+  grid-column: 2;
+  /* background-color: #505050; */
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.landing_block_second{
+  grid-row: 3;
+  grid-column: 4;
+  /* background-color: #e0e0e0;
+  background-color: #505050; */
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+.landing_block_third{
+  grid-row: 3;
+  grid-column: 6;
+  /* background-color: #e0e0e0;
+  background-color: #505050; */
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.temp_afbeeldingplaceholder{
+  height: 125px;
+  width: 125px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.temp_afbeeldingplaceholder img{
+  height: 100%;
+  width: 100%;
+}
+
+#scroll_1{
+  background-color: rgb(213, 233, 230);
+  color: #0e0e0e;
+  background-image: url("/divider_v2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 30%;
+  
+  /* background-image: url("/slide_1.jpg");
+  background-position: center;
+  background-size: cover; */
+}
+
+#scroll_2{
+  /* background-color: burlywood;
+  background-image: url("/slide_2.jpg");
+  background-position: center;
+  background-size: cover; */
+  background-color:rgb(178,202,191);
+  color: #0e0e0e;
+  background-image: url("/divider2_v2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 35%;
+
+}
+
+#scroll_3{
+  /* background-color: gray; */
+  background-color: rgb(135, 226, 199);
+  background-color: #93eccd;
+  color: #0e0e0e;
+}
+
+#myVideo{
+  grid-column: 1/ span 7;
+  grid-row: 1/ span 4;
+  z-index: -3;
+  object-fit: cover;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
 
 /*====================================================================================
 adaptive parts
@@ -709,18 +1100,23 @@ adaptive parts
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.ticket_list_info_space,
+/* .ticket_list_info_space, */
 .ticket_info_info_space,
 .ticket_send_info_space {
-  background-color: rgba(255, 255, 255, 0.1);
+  /* background-color: rgba(255, 255, 255, 0.1); */
 }
+
+.ticket_send_info_space{
+  background-color: rgba(255,255,255, 0.05);
+}
+
 
 .ticket_list_info_list_container {
   background-color: rgba(255, 255, 255, 0);
 }
 
 .ticket_list_info_list_item {
-  background-color: rgba(255, 255, 255, 0.15);
+  /* background-color: rgba(255, 255, 255, 0.15); */
 }
 
 .scrollspace button {

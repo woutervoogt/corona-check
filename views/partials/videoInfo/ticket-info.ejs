@@ -8,12 +8,10 @@
         <% } %> 
         <div class="ticket_info_video_details" >
             <!-- Hier komt een frame met de info over de geselecteerde ticket -->
-            <h3 class="ticket_info_channel_title">Channel: <span></span></h3>
-            <h3 class="ticket_info_video_title">Video: <span></span></h3>
-            <p class="ticket_info_views">Views: <span></span></p>
-            <p class="ticket_info_description">Video Description: <span>
-                        </span>
-            </p>
+            <h3 class="ticket_info_video_title"><span></span></h3>
+            <h3 class="ticket_info_channel_title"><span></span></h3>
+            <p class="ticket_info_views"> <img src="<%= eyeImage %>" width="50px" height="50px"><span></span></p>
+            <p class="ticket_info_description"><span></span></p>
         </div>
 
         <% if (page === "expertpage") { %>
@@ -47,9 +45,10 @@
         <div class="ticket_info_button_space">
             <!-- Hier komen een aantal buttons (met bijvoorbeeld links naar de video) -->
             <a href="https://www.youtube.com/watch?v=<%#= channels[0].videoId%>"><button>Go to video</button></a>
-            <button onclick="infoSpaceContent.videoDetails()">Show more info</button>
+            
 
             <% if (page === "expertpage") { %>
+                <button onclick="infoSpaceContent.videoDetails()">Show more info</button>
                 <button onclick="infoSpaceContent.score()">Give score</button>
                 <button onclick="infoSpaceContent.explanation()">Explain score</button>
             <% } %>

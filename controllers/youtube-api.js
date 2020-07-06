@@ -24,21 +24,11 @@ youtubeAPI.searchList = async function () {
   });
 
   const apiData = yTRes.data;
-  const dataRefreshed = await refreshData(apiData);
-  return dataRefreshed;
+  await YTData.deleteMany({});
+  const dataUpdated = await saveToDatabase(apiData);
+  return dataUpdated;
 };
 
-async function refreshData(apiData) {
-  const dataDeleted = await YTData.deleteMany({}, async function (err) {
-  if (err) {
-      console.log(err);
-  } else {
-      const isUpdated = await saveToDatabase(apiData);
-      return isUpdated;
-  }
-  });
-  return dataDeleted;
-}
 
 async function saveToDatabase(data){
 
@@ -46,24 +36,18 @@ async function saveToDatabase(data){
 
   for (i=0; i<data.items.length; i++){
       
-      const videoData = data.items[i];
+    const videoData = data.items[i];
 
-      const newYTData = {
-        videoId: videoData.id.videoId,
-        videoTitle: videoData.snippet.title,
-        channelId: videoData.snippet.channelId,
-        channelTitle: videoData.snippet.channelTitle,
-      };
+    const newYTData = {
+      videoId: videoData.id.videoId,
+      videoTitle: videoData.snippet.title,
+      channelId: videoData.snippet.channelId,
+      channelTitle: videoData.snippet.channelTitle,
+    };
 
-      const myLoopPromise = await YTData.create(newYTData, function (err, newlyCreated) {
-          if (err) {
-              console.log(err);
-          } else {
-              return console.log(i);
-          }
-      });
+    const myLoopPromise = await YTData.create(newYTData); 
 
-      promiseArray.push(myLoopPromise);
+    promiseArray.push(myLoopPromise);
   }
 
   const functionDone = Promise.all([promiseArray]).then((values)=>{

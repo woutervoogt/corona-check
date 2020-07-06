@@ -18,7 +18,7 @@ var myList = {
         <div class="hidden_div_temp_container">
             <div class="hidden_div_temp">
 
-                <%- include("partials/videoInfo/ticket-info", {listItems: channels, title: "Information", page: "overview"})  %>  
+                <%- include("partials/videoInfo/ticket-info", {listItems: channels, title: "Information", page: "overview", eyeImage: "/eye.svg"})  %>  
 
             </div>
         </div>        
@@ -38,7 +38,7 @@ var myList = {
         <div class="hidden_div_temp_container">
             <div class="hidden_div_temp">
 
-                <%- include("partials/videoInfo/ticket-info", {listItems: channels, title: "Information", page: "overview"})  %> 
+                <%- include("partials/videoInfo/ticket-info", {listItems: channels, title: "Information", page: "overview", eyeImage: "/eye_black.svg"})  %> 
 
             </div>  
         </div>
@@ -74,7 +74,7 @@ function drawJanus(myHeight){
     ctx.lineTo(0, myHeight);
     ctx.lineTo(0,0);
     ctx.closePath();
-    ctx.fillStyle = "#black";
+    ctx.fillStyle = "#1e1e1e";
     ctx.fill();
 }
 

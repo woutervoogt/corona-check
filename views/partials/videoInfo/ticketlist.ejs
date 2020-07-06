@@ -6,7 +6,7 @@
             <% for(var i=0; i<listItems.length; i++) {%>
             <div class="ticket_list_info_list_item" id="<%= listItems[i]._id %>">
                 <h4 class="ticket_list_item_channel"><%= listItems[i].channelTitle%></h4>
-                <h4 class="ticket_list_item_video"><%= listItems[i].videoTitle%></h4>
+                <!-- <h4 class="ticket_list_item_video"><%= listItems[i].videoTitle%></h4> -->
             </div>
             <% } %>
         </div>
@@ -14,7 +14,7 @@
     <% if (page === "expertpage") { %>
         <div class="ticket_list_button_space">
             <button class="ticket_list_button_left"></button>
-            <button class="ticket_list_button_mid"></button>
+            <button class="ticket_list_button_mid">All Tickets</button>
             <button class="ticket_list_button_right"></button>
         </div>
     <% } %>
